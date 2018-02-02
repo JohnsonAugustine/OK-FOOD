@@ -12,11 +12,11 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         \App\Admin::insert([
-            'name'  => 'Administrator',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin'),
-            'photo' => 'avatar.png',
-            'created_at' => \Carbon\Carbon::now()
+            'name'       => 'Administrator',
+            'email'      => 'admin@example.com',
+            'password'   => bcrypt('admin'),
+            'photo'      => 'avatar.png',
+            'created_at' => \Carbon\Carbon::now(),
         ]);
     }
 }

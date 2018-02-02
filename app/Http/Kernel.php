@@ -51,19 +51,19 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'customer' => \App\Http\Middleware\RedirectIfNotCustomer::class,
+        'customer'       => \App\Http\Middleware\RedirectIfNotCustomer::class,
         'customer.guest' => \App\Http\Middleware\RedirectIfCustomer::class,
-        'merchant' => \App\Http\Middleware\RedirectIfNotMerchant::class,
+        'merchant'       => \App\Http\Middleware\RedirectIfNotMerchant::class,
         'merchant.guest' => \App\Http\Middleware\RedirectIfMerchant::class,
-        'staff' => \App\Http\Middleware\RedirectIfNotStaff::class,
-        'staff.guest' => \App\Http\Middleware\RedirectIfStaff::class,
-        'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
-        'admin.guest' => \App\Http\Middleware\RedirectIfAdmin::class,
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'staff'          => \App\Http\Middleware\RedirectIfNotStaff::class,
+        'staff.guest'    => \App\Http\Middleware\RedirectIfStaff::class,
+        'admin'          => \App\Http\Middleware\RedirectIfNotAdmin::class,
+        'admin.guest'    => \App\Http\Middleware\RedirectIfAdmin::class,
+        'auth'           => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'     => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'       => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'            => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'          => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'       => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }

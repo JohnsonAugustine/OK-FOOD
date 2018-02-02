@@ -3,17 +3,18 @@
 namespace App;
 
 use App\Notifications\MerchantResetPassword;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Merchant extends Authenticatable
 {
     use Notifiable;
 
-    public function restaurants() {
-        
+    public function restaurants()
+    {
         return $this->hasMany(Restaurant::class, 'merchant_id');
     }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,7 +36,8 @@ class Merchant extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Menu;
 use App\Promotion;
+use Illuminate\Http\Request;
 use Image;
-use Storage;
 use Session;
-
+use Storage;
 
 class PromotionController extends Controller
 {
@@ -20,6 +19,7 @@ class PromotionController extends Controller
     public function index()
     {
         $promotions = Promotion::all();
+
         return view('admin.promotion.index')->withPromotions($promotions);
     }
 
@@ -31,19 +31,21 @@ class PromotionController extends Controller
     public function create()
     {
         $menus = Menu::all();
+
         return view('admin.promotion.create')->withMenus($menus);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $menus = Menu::all();
-        $promotion = new Promotion;
+        $promotion = new Promotion();
 
         $promotion->menu_id = $request->menu_id;
         $promotion->name = $request->name;
@@ -51,21 +53,22 @@ class PromotionController extends Controller
         $promotion->image = $request->image;
 
         $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
-            Image::make($image)->resize(800, 400)->save($location);
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $location = public_path('/images/'.$filename);
+        Image::make($image)->resize(800, 400)->save($location);
         $promotion->image = $filename;
 
         $promotion->save();
         Session::flash('success', 'Promotion was successfully created!');
-        return redirect()->route('admin.promotion.index');
 
+        return redirect()->route('admin.promotion.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +79,8 @@ class PromotionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +91,9 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +104,8 @@ class PromotionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -110,6 +116,7 @@ class PromotionController extends Controller
         $promotion->delete();
 
         Session::flash('success', 'Promotion was successfully deleted!');
+
         return redirect()->route('admin.promotion.index');
     }
 }

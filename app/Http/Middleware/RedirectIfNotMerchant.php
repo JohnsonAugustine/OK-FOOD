@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfNotMerchant
 {
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @param  string|null  $guard
-	 * @return mixed
-	 */
-	public function handle($request, Closure $next, $guard = 'merchant')
-	{
-	    if (!Auth::guard($guard)->check()) {
-	        return redirect('merchant/login');
-	    }
+    /**
+     * Handle an incoming request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     * @param string|null              $guard
+     *
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $guard = 'merchant')
+    {
+        if (!Auth::guard($guard)->check()) {
+            return redirect('merchant/login');
+        }
 
-	    return $next($request);
-	}
+        return $next($request);
+    }
 }

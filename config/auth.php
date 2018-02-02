@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard'     => 'web',
         'passwords' => 'users',
     ],
 
@@ -37,32 +37,32 @@ return [
 
     'guards' => [
         'customer' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'customers',
         ],
 
         'merchant' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'merchants',
         ],
 
         'staff' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'staff',
         ],
 
         'admin' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'admins',
         ],
 
         'web' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver'   => 'token',
             'provider' => 'users',
         ],
     ],
@@ -87,27 +87,27 @@ return [
     'providers' => [
         'customers' => [
             'driver' => 'eloquent',
-            'model' => App\Customer::class,
+            'model'  => App\Customer::class,
         ],
 
         'merchants' => [
             'driver' => 'eloquent',
-            'model' => App\Merchant::class,
+            'model'  => App\Merchant::class,
         ],
 
         'staff' => [
             'driver' => 'eloquent',
-            'model' => App\Staff::class,
+            'model'  => App\Staff::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model'  => App\Admin::class,
         ],
 
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model'  => App\User::class,
         ],
 
         // 'users' => [
@@ -134,32 +134,32 @@ return [
     'passwords' => [
         'customers' => [
             'provider' => 'customers',
-            'table' => 'customer_password_resets',
-            'expire' => 60,
+            'table'    => 'customer_password_resets',
+            'expire'   => 60,
         ],
 
         'merchants' => [
             'provider' => 'merchants',
-            'table' => 'merchant_password_resets',
-            'expire' => 60,
+            'table'    => 'merchant_password_resets',
+            'expire'   => 60,
         ],
 
         'staff' => [
             'provider' => 'staff',
-            'table' => 'staff_password_resets',
-            'expire' => 60,
+            'table'    => 'staff_password_resets',
+            'expire'   => 60,
         ],
 
         'admins' => [
             'provider' => 'admins',
-            'table' => 'admin_password_resets',
-            'expire' => 60,
+            'table'    => 'admin_password_resets',
+            'expire'   => 60,
         ],
 
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
         ],
     ],
 

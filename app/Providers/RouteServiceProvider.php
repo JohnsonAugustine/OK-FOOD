@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -61,9 +61,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => ['web', 'admin', 'auth:admin'],
-            'prefix' => 'admin',
-            'as' => 'admin.',
-            'namespace' => $this->namespace,
+            'prefix'     => 'admin',
+            'as'         => 'admin.',
+            'namespace'  => $this->namespace,
         ], function ($router) {
             require base_path('routes/admin.php');
         });
@@ -80,9 +80,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => ['web', 'staff', 'auth:staff'],
-            'prefix' => 'staff',
-            'as' => 'staff.',
-            'namespace' => $this->namespace,
+            'prefix'     => 'staff',
+            'as'         => 'staff.',
+            'namespace'  => $this->namespace,
         ], function ($router) {
             require base_path('routes/staff.php');
         });
@@ -99,9 +99,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => ['web', 'merchant', 'auth:merchant'],
-            'prefix' => 'merchant',
-            'as' => 'merchant.',
-            'namespace' => $this->namespace,
+            'prefix'     => 'merchant',
+            'as'         => 'merchant.',
+            'namespace'  => $this->namespace,
         ], function ($router) {
             require base_path('routes/merchant.php');
         });
@@ -118,9 +118,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => ['web', 'customer', 'auth:customer'],
-            'prefix' => 'customer',
-            'as' => 'customer.',
-            'namespace' => $this->namespace,
+            'prefix'     => 'customer',
+            'as'         => 'customer.',
+            'namespace'  => $this->namespace,
         ], function ($router) {
             require base_path('routes/customer.php');
         });

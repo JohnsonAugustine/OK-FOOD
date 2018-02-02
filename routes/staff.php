@@ -9,4 +9,3 @@ Route::get('/home', function () {
 
     return view('staff.home');
 })->name('home');
-
