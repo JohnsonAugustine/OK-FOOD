@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Restaurant;
-use Image;
-use Storage;
-use Session;
-use App\Type;
 use App\Merchant;
+use App\Restaurant;
+use App\Type;
+use Illuminate\Http\Request;
+use Image;
+use Session;
+use Storage;
 
 class RestaurantController extends Controller
 {
@@ -20,6 +20,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::paginate(16);
+
         return view('admin.restaurant.index')->withRestaurants($restaurants);
     }
 
@@ -32,18 +33,20 @@ class RestaurantController extends Controller
     {
         $types = Type::all();
         $merchants = Merchant::all();
+
         return view('admin.restaurant.create')->with(['types' => $types, 'merchants' => $merchants]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $restaurant = new Restaurant;
+        $restaurant = new Restaurant();
         $restaurant->type_id = $request->type_id;
         $restaurant->merchant_id = $request->merchant_id;
         $restaurant->name = $request->name;
@@ -59,35 +62,38 @@ class RestaurantController extends Controller
         $restaurant->priority = $request->priority;
         $restaurant->open = $request->open;
         $restaurant->close = $request->close;
-        
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
-            Image::make($image)->resize(800, 400)->save($location);
+
+        $image = $request->file('image');
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $location = public_path('/images/'.$filename);
+        Image::make($image)->resize(800, 400)->save($location);
         $restaurant->image = $filename;
 
         $restaurant->save();
         Session::flash('success', 'Restaurant was successfully created!');
-        return redirect()->route('admin.restaurant.index');
 
+        return redirect()->route('admin.restaurant.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
+
         return view('admin.restaurant.show')->withRestaurant($restaurant);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,23 +101,25 @@ class RestaurantController extends Controller
         $types = Type::all();
         $restaurant = Restaurant::find($id);
         $merchants = Merchant::all();
+
         return view('admin.restaurant.edit')->with(['merchants' => $merchants, 'types'=> $types, 'restaurant'=> $restaurant]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $restaurant = Restaurant::find($id);  
+        $restaurant = Restaurant::find($id);
 
         $restaurant->type_id = $request->input('type_id');
         $restaurant->merchant_id = $request->input('merchant_id');
-        $restaurant->name = $request->input('name');  
+        $restaurant->name = $request->input('name');
         $restaurant->description = $request->input('description');
         $restaurant->city = $request->input('city');
         $restaurant->district = $request->input('district');
@@ -125,26 +133,28 @@ class RestaurantController extends Controller
         $restaurant->open = $request->input('open');
         $restaurant->close = $request->input('close');
 
-          if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('/images/'.$filename);
             Image::make($image)->resize(800, 400)->save($location);
             $oldFilename = $restaurant->image;
             $restaurant->image = $filename;
             Storage::delete($oldFilename);
-          }
+        }
 
         $restaurant->save();
-        
+
         Session::flash('success', 'Restaurant was successfully updated!');
+
         return redirect()->route('admin.restaurant.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -155,6 +165,7 @@ class RestaurantController extends Controller
         $restaurant->delete();
 
         Session::flash('success', 'Restaurant was successfully deleted!');
+
         return redirect()->route('admin.restaurant.index');
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Type;
+use Illuminate\Http\Request;
 use Image;
-use Storage;
 use Session;
+use Storage;
 
 class TypeController extends Controller
 {
@@ -18,6 +18,7 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::paginate(10);
+
         return view('admin.type.index')->withTypes($types);
     }
 
@@ -34,31 +35,33 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $type = new Type;
+        $type = new Type();
 
         $type->name = $request->name;
 
         $image = $request->file('image');
-          $filename = time() . '.' . $image->getClientOriginalExtension();
-          $location = public_path('/images/' . $filename);
-          Image::make($image)->resize(800, 400)->save($location);
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $location = public_path('/images/'.$filename);
+        Image::make($image)->resize(800, 400)->save($location);
         $type->image = $filename;
 
         $type->save();
         Session::flash('success', 'Type was successfully created!');
-        return redirect()->route('admin.type.index');
 
+        return redirect()->route('admin.type.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,52 +72,56 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $type = Type::find($id);
+
         return view('admin.type.edit')->withType($type);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, array(
-            'name' => 'required|max:255',
+        $this->validate($request, [
+            'name'  => 'required|max:255',
             'image' => 'required',
-          ));
+          ]);
 
-        $type = Type::find($id);  
+        $type = Type::find($id);
 
-        $type->name = $request->input('name');  
-          if ($request->hasFile('image')) {
+        $type->name = $request->input('name');
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('/images/'.$filename);
             Image::make($image)->resize(800, 400)->save($location);
             $oldFilename = $type->image;
             $type->image = $filename;
             Storage::delete($oldFilename);
-          }
+        }
         $type->save();
-        
-        Session::flash('success', 'Type was successfully updated!');
-        return redirect()->route('admin.type.index');
 
+        Session::flash('success', 'Type was successfully updated!');
+
+        return redirect()->route('admin.type.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -125,6 +132,7 @@ class TypeController extends Controller
         $type->delete();
 
         Session::flash('success', 'Type was successfully deleted!');
+
         return redirect()->route('admin.type.index');
     }
 }

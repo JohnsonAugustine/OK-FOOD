@@ -16,8 +16,3 @@ Route::resource('restaurant', 'RestaurantController');
 Route::resource('menu', 'MenuController');
 Route::resource('promotion', 'PromotionController');
 Route::resource('setting', 'PageController');
-
-
-
-
-

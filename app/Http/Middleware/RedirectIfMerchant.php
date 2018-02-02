@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfMerchant
 {
-	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @param  string|null  $guard
-	 * @return mixed
-	 */
-	public function handle($request, Closure $next, $guard = 'merchant')
-	{
-	    if (Auth::guard($guard)->check()) {
-	        return redirect('merchant/home');
-	    }
+    /**
+     * Handle an incoming request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     * @param string|null              $guard
+     *
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $guard = 'merchant')
+    {
+        if (Auth::guard($guard)->check()) {
+            return redirect('merchant/home');
+        }
 
-	    return $next($request);
-	}
+        return $next($request);
+    }
 }
