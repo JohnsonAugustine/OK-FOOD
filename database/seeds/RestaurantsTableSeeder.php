@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Restaurant;
 
 class RestaurantsTableSeeder extends Seeder
 {
@@ -10,8 +9,9 @@ class RestaurantsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run() {
-    // {
+    public function run()
+    {
+        // {
     //     \App\Restaurant::insert([
     //         'merchant_id' => 1,
     //         'type_id' => 1,
