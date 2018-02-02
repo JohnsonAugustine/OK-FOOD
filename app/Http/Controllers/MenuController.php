@@ -128,6 +128,12 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        Storage::delete($menu->image);
+
+        $menu->delete();
+
+        Session::flash('success', 'Menu was successfully deleted!');
+        return redirect()->route('admin.menu.index');
     }
 }

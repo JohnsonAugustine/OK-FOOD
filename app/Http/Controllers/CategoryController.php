@@ -50,11 +50,11 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
 
-        $image = $request->file('image');
-          $filename = time() . '.' . $image->getClientOriginalExtension();
-          $location = public_path('/images/' . $filename);
-          Image::make($image)->resize(800, 400)->save($location);
-        $category->image = $filename;
+        // $image = $request->file('image');
+        //   $filename = time() . '.' . $image->getClientOriginalExtension();
+        //   $location = public_path('/images/' . $filename);
+        //   Image::make($image)->resize(800, 400)->save($location);
+        // $category->image = $filename;
 
         $category->save();
         Session::flash('success', 'Category was successfully created!');
@@ -96,21 +96,20 @@ class CategoryController extends Controller
     {
         $this->validate($request, array(
             'name' => 'required|max:255',
-            'image' => 'required',
           ));
 
         $category = Category::find($id);  
 
-        $category->name = $request->input('name');  
-          if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('/images/' . $filename);
-            Image::make($image)->resize(800, 400)->save($location);
-            $oldFilename = $category->image;
-            $category->image = $filename;
-            Storage::delete($oldFilename);
-          }
+        // $category->name = $request->input('name');  
+        //   if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $location = public_path('/images/' . $filename);
+        //     Image::make($image)->resize(800, 400)->save($location);
+        //     $oldFilename = $category->image;
+        //     $category->image = $filename;
+        //     Storage::delete($oldFilename);
+        //   }
         $category->save();
         
         Session::flash('success', 'Menu was successfully updated!');
@@ -127,7 +126,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-        Storage::delete($category->image);
+        //Storage::delete($category->image);
 
         $category->delete();
 

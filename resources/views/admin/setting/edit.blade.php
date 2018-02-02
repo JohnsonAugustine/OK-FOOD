@@ -55,6 +55,13 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label class="col-lg-2 col-form-label" for="val-username">Country <span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                {{ Form::text('country', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}  
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label class="col-lg-2 col-form-label" for="val-username">City <span class="text-danger">*</span></label>
                                             <div class="col-lg-6">
                                                 {{ Form::text('city', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}  

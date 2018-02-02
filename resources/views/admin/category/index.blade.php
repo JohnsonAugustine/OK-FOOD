@@ -72,7 +72,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 100px;">NO</th>
-                                        <th style="width: 100px;">Image</th>
+                                        <!-- <th style="width: 100px;">Image</th> -->
                                         <th class="d-none d-sm-table-cell">Name</th>
                                         <th>Created At</th>
                                         <th >Action</th>
@@ -86,9 +86,7 @@
                                         <td>
                                             <span class="text-black">{{$i}}</span>
                                         </td>
-                                        <td>
-                                        <img src="{{ asset('images/' . $category->image) }}" width="60" height="20">
-                                        </td>
+                                        
                                         <td class="d-none d-md-table-cell">
                                             <span class="text-black">{{$category->name}}</span>
                                         </td>

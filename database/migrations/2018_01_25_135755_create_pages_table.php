@@ -26,6 +26,7 @@ class CreatePagesTable extends Migration
             $table->string('street');
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
+            $table->longText('term_and_conditions')->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use App\Promotion;
 use Image;
 use Storage;
 use Session;
@@ -18,8 +19,8 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
-        return view('admin.promotion.index')->withMenus($menus);
+        $promotions = Promotion::all();
+        return view('admin.promotion.index')->withPromotions($promotions);
     }
 
     /**
@@ -29,7 +30,8 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        $menus = Menu::all();
+        return view('admin.promotion.create')->withMenus($menus);
     }
 
     /**
@@ -40,7 +42,24 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $menus = Menu::all();
+        $promotion = new Promotion;
+
+        $promotion->menu_id = $request->menu_id;
+        $promotion->name = $request->name;
+        $promotion->description = $request->description;
+        $promotion->image = $request->image;
+
+        $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('/images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+        $promotion->image = $filename;
+
+        $promotion->save();
+        Session::flash('success', 'Promotion was successfully created!');
+        return redirect()->route('admin.promotion.index');
+
     }
 
     /**
@@ -85,6 +104,12 @@ class PromotionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $promotion = Promotion::find($id);
+        Storage::delete($promotion->image);
+
+        $promotion->delete();
+
+        Session::flash('success', 'Promotion was successfully deleted!');
+        return redirect()->route('admin.promotion.index');
     }
 }

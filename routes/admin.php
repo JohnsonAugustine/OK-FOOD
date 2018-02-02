@@ -1,15 +1,15 @@
 <?php
 
-Route::get('/home', function () {
-    $users[] = Auth::user();
-    $users[] = Auth::guard()->user();
-    $users[] = Auth::guard('admin')->user();
+// Route::get('/home', function () {
+//     $users[] = Auth::user();
+//     $users[] = Auth::guard()->user();
+//     $users[] = Auth::guard('admin')->user();
 
-    //dd($users);
+//     //dd($users);
 
-    return view('admin.home');
-})->name('home');
-
+//     return view('admin.home');
+// })->name('home');
+Route::get('/home', 'DashboardController@dashboard')->name('home');
 Route::resource('category', 'CategoryController');
 Route::resource('type', 'TypeController');
 Route::resource('restaurant', 'RestaurantController');
