@@ -9,11 +9,11 @@
 
 //     return view('admin.home');
 // })->name('home');
-Route::get('/home', 'DashboardController@dashboard')->name('home');
-Route::resource('category', 'CategoryController');
-Route::resource('type', 'TypeController');
-Route::resource('restaurant', 'RestaurantController');
-Route::resource('menu', 'MenuController');
-Route::resource('promotion', 'PromotionController');
-Route::resource('page', 'PageController');
-Route::resource('tax', 'TaxController');
+Route::get('/home', 'AdminAuth\DashboardController@dashboard')->name('home');
+Route::resource('category', 'AdminAuth\CategoryController');
+Route::resource('type', 'AdminAuth\TypeController');
+Route::resource('restaurant', 'AdminAuth\RestaurantController');
+Route::resource('menu', 'AdminAuth\MenuController');
+Route::resource('promotion', 'AdminAuth\PromotionController');
+Route::resource('page', 'AdminAuth\PageController');
+Route::resource('tax', 'AdminAuth\TaxController');

@@ -151,9 +151,9 @@
                                             <i class="si si-login mr-10"></i> Sign In
                                         </button>
                                         <div class="mt-30">
-                                            <!-- <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#">
+                                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{url('/merchant/register')}}">
                                                 <i class="fa fa-plus mr-5"></i> Create Account
-                                            </a> -->
+                                            </a>
                                             <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{ url('/admin/password/reset') }}">
                                                 <i class="fa fa-warning mr-5"></i> Forgot Password
                                             </a>

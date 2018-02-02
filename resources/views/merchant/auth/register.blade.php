@@ -161,7 +161,7 @@
                     <main id="main-container">
                         <!-- Page Content -->
                         <div class="bg-image" style="background-image: url('{{asset("assets/img/photos/restaurant.jpg") }}">
-                            <div class="row mx-0 bg-earth-op">
+                            <div class="row mx-0 bg-black-op">
                                 <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                                     <div class="p-30 invisible" data-toggle="appear">
                                         <p class="font-size-h3 font-w600 text-white mb-5">
@@ -263,7 +263,7 @@
                                                     <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#" data-toggle="modal" data-target="#modal-terms">
                                                         <i class="fa fa-book text-muted mr-5"></i> Read Terms
                                                     </a>
-                                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="op_auth_signin2.html">
+                                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{url('/merchant/login')}}">
                                                         <i class="fa fa-user text-muted mr-5"></i> Sign In
                                                     </a>
                                                 </div>

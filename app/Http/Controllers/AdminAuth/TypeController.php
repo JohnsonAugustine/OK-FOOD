@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminAuth;
 
 use App\Type;
 use Illuminate\Http\Request;

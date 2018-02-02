@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminAuth;
 
+use App\Page;
 use Illuminate\Http\Request;
-use App\Tax;
 
-class TaxController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,6 @@ class TaxController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,13 +23,13 @@ class TaxController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +40,8 @@ class TaxController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,36 +52,49 @@ class TaxController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $tax = Tax::find($id);
-        return view('admin.tax.edit')->withTax($tax);
+        $page = Page::find(1);
+
+        return view('admin.page.edit')->withPage($page);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $tax = Tax::find($id);
-        $tax->tax = $request->input('tax');
-        $tax->delivery_cost = $request->input('delivery_cost');
+        $page = Page::find($id);
+        $page->title = $request->input('title');
+        $page->name = $request->input('name');
+        $page->description = $request->input('description');
+        $page->about = $request->input('about');
+        $page->contact = $request->input('contact');
+        $page->city = $request->input('city');
+        $page->district = $request->input('district');
+        $page->street = $request->input('street');
+        $page->latitude = $request->input('latitude');
+        $page->longitude = $request->input('longitude');
 
-        $tax->save();
+        $page->save();
+
         return redirect()->route('admin.home');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -8,5 +8,5 @@
                         <a class="font-w600" href="https://goo.gl/po9Usv" target="_blank">Codebase 1.3</a> &copy; <span class="js-year-copy">2017</span>
                     </div>
                 </div>
-            </footer>
+</footer>
             <!-- END Footer -->
