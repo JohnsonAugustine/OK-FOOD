@@ -1,6 +1,8 @@
 ## OK-FOOD
 
-[![Build Status](https://api.travis-ci.org/winnerawan/OK-FOOD.svg?branch=master)](https://travis-ci.org/winnerawan/OK-FOOD) [![StyleCI](https://styleci.io/repos/119818501/shield?style=plastic)](https://styleci.io/repos/119818501) 
+[![Build Status](https://api.travis-ci.org/winnerawan/OK-FOOD.svg?branch=master)](https://travis-ci.org/winnerawan/OK-FOOD)
+[![codecov.io Code Coverage](https://codecov.io/gh/winnerawan/OK-FOOD/branch/master/graph/badge.svg)](https://codecov.io/github/winnerawan/OK-FOOD?branch=master)
+[![StyleCI](https://styleci.io/repos/119818501/shield)](https://styleci.io/repos/119818501) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/winnerawan/OK-FOOD)
 [![WIKI](https://img.shields.io/badge/READ-WIKI-green.svg)](https://github.com/winnerawan/OK-FOOD/wiki) 
 
