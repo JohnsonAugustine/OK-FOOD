@@ -12,8 +12,8 @@ class TaxTableSeeder extends Seeder
     public function run()
     {
         \App\Tax::insert([
-            'tax' => 5,
-            'delivery_cost' => 6000
+            'tax'           => 5,
+            'delivery_cost' => 6000,
         ]);
     }
 }
