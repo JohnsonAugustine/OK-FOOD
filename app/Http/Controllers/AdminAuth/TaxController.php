@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\AdminAuth;
 
-use Illuminate\Http\Request;
 use App\Tax;
+use Illuminate\Http\Request;
 
 class TaxController extends Controller
 {
@@ -24,13 +24,13 @@ class TaxController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +41,8 @@ class TaxController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -52,20 +53,23 @@ class TaxController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $tax = Tax::find($id);
+
         return view('admin.tax.edit')->withTax($tax);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,13 +79,15 @@ class TaxController extends Controller
         $tax->delivery_cost = $request->input('delivery_cost');
 
         $tax->save();
+
         return redirect()->route('admin.home');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
