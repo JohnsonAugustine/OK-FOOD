@@ -15,4 +15,5 @@ Route::resource('type', 'TypeController');
 Route::resource('restaurant', 'RestaurantController');
 Route::resource('menu', 'MenuController');
 Route::resource('promotion', 'PromotionController');
-Route::resource('setting', 'PageController');
+Route::resource('page', 'PageController');
+Route::resource('tax', 'TaxController');

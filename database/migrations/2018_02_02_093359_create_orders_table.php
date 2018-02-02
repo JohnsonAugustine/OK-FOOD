@@ -17,12 +17,14 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('restaurant_id');
             $table->integer('customer_id');
-            $table->decimal('sub_total', 8, 2);
-            $table->decimal('tax', 8, 2);
-            $table->decimal('total_with_tax', 8, 2);
+            $table->decimal('sub_total', 8, 2)->nullable();
+            $table->decimal('tax', 8, 2)->nullable();
+            $table->decimal('delivery_cost', 8, 2)->nullable();
             $table->string('voucher_code')->nullable();
             $table->decimal('voucher_ammount', 8, 2)->nullable();
-            $table->string('delivery_address');
+            $table->decimal('total', 8, 2)->nullable();
+            $table->decimal('net_income', 8, 2)->nullable();
+            $table->string('delivery_address')->nullable();
             $table->timestamps();
         });
     }

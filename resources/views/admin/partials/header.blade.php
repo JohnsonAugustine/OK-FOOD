@@ -107,7 +107,7 @@
 
                                 <!-- Toggle Side Overlay -->
                                 <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                                <a class="dropdown-item" href="{{url('/admin/setting/1/edit')}}" data-toggle="layout" data-action="">
+                                <a class="dropdown-item" href="{{url('/admin/page/1/edit')}}" data-toggle="layout" data-action="">
                                     <i class="si si-wrench mr-5"></i> Settings
                                 </a>
                                 <!-- END Side Overlay -->

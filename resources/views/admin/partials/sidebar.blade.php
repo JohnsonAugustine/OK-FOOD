@@ -4,15 +4,9 @@
                     <!-- Sidebar Content -->
                     <div class="sidebar-content">
                         <!-- Side Header -->
-                        <div class="content-header content-header-fullrow px-15">
+                        <div class="content-header content-header-fullrow px-10">
                             <!-- Mini Mode -->
-                            <div class="content-header-section sidebar-mini-visible-b">
-                                <!-- Logo -->
-                                <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
-                                    <span class="text-dual-primary-dark">c</span><span class="text-primary">b</span>
-                                </span>
-                                <!-- END Logo -->
-                            </div>
+                            
                             <!-- END Mini Mode -->
 
                             <!-- Normal Mode -->
@@ -314,7 +308,10 @@
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-visible">BD</span><span class="sidebar-mini-hidden">Settings</span></li>
                                 <li>
-                                    <a href="{{url('/admin/setting/1/edit')}}"><i class="fa fa-fw fa-cog"></i><span class="sidebar-mini-hide">General</span></a>
+                                    <a href="{{url('/admin/page/1/edit')}}"><i class="fa fa-fw fa-cog"></i><span class="sidebar-mini-hide">Page</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/admin/tax/1/edit')}}"><i class="fa fa-fw fa-money"></i><span class="sidebar-mini-hide">Tax &amp; Delivery Cost</span></a>
                                 </li>
                                 
                             </ul>
