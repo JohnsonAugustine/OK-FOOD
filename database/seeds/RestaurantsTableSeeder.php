@@ -10,7 +10,7 @@ class RestaurantsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run() {
     // {
     //     \App\Restaurant::insert([
     //         'merchant_id' => 1,
