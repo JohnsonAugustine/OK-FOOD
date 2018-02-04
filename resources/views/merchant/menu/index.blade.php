@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('merchant.template')
 
 @section('content')
  <!-- Main Container -->
@@ -29,7 +29,7 @@
 
                         <!-- Add Product -->
                         <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="{{url('/admin/menu/create')}}">
+                            <a class="block block-rounded block-link-shadow" href="{{url('/merchant/menu/create')}}">
                                 <div class="block-content block-content-full block-sticky-options">
                                     <div class="block-options">
                                         <div class="block-options-item">
@@ -77,9 +77,7 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center" style="width: 100px;"><i class="fa fa-glass"></i></th>
-                                            <th style="width: 30%;">Name</th>
-                                            <th style="width: 30%;">Restaurant</th>
-                                            <th style="width: 30%;">Category</th>
+                                            <th>Name</th>
                                             <th style="width: 15%;">Price</th>
                                             <th style="width: 15%;">Availability</th>
                                             <th class="text-center" style="width: 100px;">Actions</th>
@@ -92,8 +90,6 @@
                                                 <img class="img-avatar img-avatar48" src="{{ asset('images/' . $menu->image) }}" alt="">
                                             </td>
                                             <td class="font-w600">{{$menu->name}}</td>
-                                            <td>{{$menu->category->restaurant->name}}</td>
-                                            <td>{{$menu->category->name}}</td>
                                             <td>{{$menu->price}}</td>
                                             <td>
                                                 @if($menu->availability==1) 
@@ -104,12 +100,12 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::open(['route' => ['admin.menu.edit', $menu->id], 'method'=> 'GET']) !!}
+                                                    {!! Form::open(['route' => ['merchant.menu.edit', $menu->id], 'method'=> 'GET']) !!}
                                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
                                                         <i class="fa fa-pencil"></i>
                                                     </button>
                                                     {!! Form::close()  !!}
-                                                    {!! Form::open(['route' => ['admin.menu.destroy', $menu->id], 'method' => 'DELETE']) !!}
+                                                    {!! Form::open(['route' => ['merchant.menu.destroy', $menu->id], 'method' => 'DELETE']) !!}
                                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
                                                         <i class="fa fa-times"></i>
                                                     </button>

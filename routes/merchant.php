@@ -9,3 +9,7 @@ Route::get('/home', function () {
 
     return view('merchant.home');
 })->name('home');
+
+Route::resource('category', 'MerchantAuth\CategoryController');
+Route::resource('restaurant', 'MerchantAuth\RestaurantController');
+Route::resource('menu', 'MerchantAuth\MenuController');

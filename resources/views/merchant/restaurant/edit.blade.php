@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('merchant.template')
 
 @section('content')
 
@@ -17,28 +17,10 @@
                                 <div class="col-xl-10">
                                     <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                    {!! Form::model($restaurant, ['route' => ['admin.restaurant.update', $restaurant->id], 'method' => 'PUT', 'files' => true]) !!}
+                                    {!! Form::model($restaurant, ['route' => ['merchant.restaurant.update', $restaurant->id], 'method' => 'PUT', 'files' => true]) !!}
                                         {{ csrf_field() }}
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-username">For Merchant <span class="text-danger">*</span></label>
-                                            <div class="col-lg-8">
-                                            <select class="form-control" name="merchant_id">
-                                                    @foreach($merchants as $merchant)
-                                                    <option value='{{ $merchant->id }}'>{{ $merchant->name }}</option>
-                                                    @endforeach
-                                            </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-username">Type <span class="text-danger">*</span></label>
-                                            <div class="col-lg-8">
-                                            <select class="form-control" name="type_id">
-                                                    @foreach($types as $type)
-                                                    <option value='{{ $type->id }}'>{{ $type->name }}</option>
-                                                    @endforeach
-                                            </select>
-                                            </div>
-                                        </div>
+                                        
+                                        
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-email">Name <span class="text-danger">*</span></label>
                                             <div class="col-lg-8">
@@ -93,24 +75,7 @@
                                             {{ Form::text('longitude', null, array('class' => 'form-control', 'maxlength' => '255')) }}
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-number">Rating </label>
-                                            <div class="col-lg-6">
-                                            {{ Form::text('rating', null, array('class' => 'form-control', 'maxlength' => '255')) }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                        <label class="col-lg-4 col-form-label" for="val-number">Active ? <span class="text-danger">*</span></label>
-                                        <div class="col-lg-6">
-                                            {{ Form::select('is_active', ['1' => 'Active', '0' => 'Non Active'], '0', array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-number">Priority <span class="text-danger">*</span></label>
-                                            <div class="col-lg-6">
-                                            {{ Form::selectRange('priority', 1, 10, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
-                                            </div>
-                                        </div>
+                                        
                                         <div class="form-group row">
                                         <label class="col-lg-4 col-form-label" for="val-number">Open <span class="text-danger">*</span></label>
                                         <div class="col-lg-6">

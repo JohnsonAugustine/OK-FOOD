@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('merchant.template')
 
 @section('content')
 
@@ -30,7 +30,7 @@
 
                         <!-- Add Product -->
                         <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="{{url('/admin/category/create')}}">
+                            <a class="block block-rounded block-link-shadow" href="{{url('/merchant/category/create')}}">
                                 <div class="block-content block-content-full block-sticky-options">
                                     <div class="block-options">
                                         <div class="block-options-item">
@@ -74,7 +74,6 @@
                                         <th style="width: 100px;">NO</th>
                                         <!-- <th style="width: 100px;">Image</th> -->
                                         <th class="d-none d-sm-table-cell">Name</th>
-                                        <th>Restaurant</th>
                                         <th>Created At</th>
                                         <th >Action</th>
                                     </tr>
@@ -92,19 +91,16 @@
                                             <span class="text-black">{{$category->name}}</span>
                                         </td>
                                         <td class="d-none d-md-table-cell">
-                                            <span class="text-black">{{$category->restaurant->name}}</span>
-                                        </td>
-                                        <td class="d-none d-md-table-cell">
                                             <span class="text-black">{{$category->created_at}}</span>
                                         </td>
                                         <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::open(['route' => ['admin.category.edit', $category->id], 'method'=> 'GET']) !!}
+                                                    {!! Form::open(['route' => ['merchant.category.edit', $category->id], 'method'=> 'GET']) !!}
                                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
                                                         <i class="fa fa-pencil"></i>
                                                     </button>
                                                     {!! Form::close()  !!}
-                                                    {!! Form::open(['route' => ['admin.category.destroy', $category->id], 'method' => 'DELETE']) !!}
+                                                    {!! Form::open(['route' => ['merchant.category.destroy', $category->id], 'method' => 'DELETE']) !!}
                                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
                                                         <i class="fa fa-times"></i>
                                                     </button>
@@ -124,7 +120,6 @@
                                 <div class="pagination justify-content-end">
                                     
                                 <div class="pagination justify-content-end">
-                                    {!! $categories->links(); !!}
                                 </div>
                                     
                                 </div>

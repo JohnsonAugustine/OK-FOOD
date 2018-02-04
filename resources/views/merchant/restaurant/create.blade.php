@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('merchant.template')
 
 @section('content')
 
@@ -17,8 +17,9 @@
                                 <div class="col-xl-10">
                                     <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                    {!! Form::model($restaurant, ['route' => ['admin.restaurant.update', $restaurant->id], 'method' => 'PUT', 'files' => true]) !!}
+                                    {!! Form::open(['route' => 'admin.restaurant.store', 'data-parsley-validate' => '', 'files' => true, 'method' => 'POST  ']) !!}
                                         {{ csrf_field() }}
+
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-username">For Merchant <span class="text-danger">*</span></label>
                                             <div class="col-lg-8">
@@ -29,6 +30,7 @@
                                             </select>
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-username">Type <span class="text-danger">*</span></label>
                                             <div class="col-lg-8">
@@ -39,6 +41,7 @@
                                             </select>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-email">Name <span class="text-danger">*</span></label>
                                             <div class="col-lg-8">
@@ -126,7 +129,7 @@
                                     
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
-                                            {{ Form::submit('Update', array('class' => 'btn btn-alt-primary', 'style' => 'margin-top: 0px;')) }}                                            </div>
+                                            {{ Form::submit('Create', array('class' => 'btn btn-alt-primary', 'style' => 'margin-top: 0px;')) }}                                            </div>
                                         </div>
                                         {!! Form::close() !!}
                                         </div>

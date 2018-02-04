@@ -15,8 +15,8 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('merchant_id');
             $table->integer('type_id');
+            $table->integer('merchant_id');
             $table->string('name');
             $table->longText('description');
             $table->string('city');
@@ -28,7 +28,7 @@ class CreateRestaurantsTable extends Migration
             $table->double('longitude')->nullable();
             $table->double('rating')->nullable();
             $table->integer('is_active');
-            $table->integer('priority');
+            $table->integer('priority')->nullable();
             $table->time('open');
             $table->time('close');
             $table->timestamps();

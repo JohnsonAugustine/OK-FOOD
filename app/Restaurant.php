@@ -11,9 +11,9 @@ class Restaurant extends Model
         return $this->belongsTo(Type::class, 'type_id');
     }
 
-    public function menu()
+    public function category()
     {
-        return $this->hasMany(Menu::class, 'restaurant_id');
+        return $this->hasMany(Category::class, 'restaurant_id');
     }
 
     public function merchant()

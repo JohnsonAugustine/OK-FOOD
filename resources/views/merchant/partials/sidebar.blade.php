@@ -96,10 +96,10 @@
                                
                                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Navigation</span></li>
                                 <li>
-                                    <a href="#"><i class="fa fa-fw fa-home"></i><span class="sidebar-mini-hide">Restaurant</span></a>
+                                    <a href="{{url('/merchant/restaurant')}}"><i class="fa fa-fw fa-home"></i><span class="sidebar-mini-hide">Restaurant</span></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-fw fa-edit"></i><span class="sidebar-mini-hide">Order</span></a>
+                                    <a href="{{url('/merchant/order')}}"><i class="fa fa-fw fa-edit"></i><span class="sidebar-mini-hide">Order</span></a>
                                 </li>
                                 <li>
                                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-fw fa-coffee"></i><span class="sidebar-mini-hide">Menu</span></a>

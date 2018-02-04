@@ -65,11 +65,8 @@
                                 <li><a href="{{url('/merchant/register')}}">Register</a></li>
                             </ul>
                         </li>                    
-                        <li class="dropdown"><a href="blog.html">Customer <i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                            <li><a href="{{url('/customer/login')}}">Login</a></li>
-                            <li><a href="{{url('/customer/register')}}">Register</a></li>
-                            </ul>
+                        <li><a href="{{url('/merchant/register')}}">Claim Restaurant</a>
+                        
                         </li>
                                            
                         <li><a href="{{url('/admin/login')}}">Administrator</a></li>                    
@@ -95,7 +92,7 @@
                     <div class="slide-text">
                         <h1>{{$page->description}}</h1>
                         <p>{{$page->about}}</p>
-                        <a href="{{url('/merchant/register')}}}" class="btn btn-common">JOIN WITH US</a>
+                        <a href="{{url('/merchant/register')}}" class="btn btn-common">JOIN WITH US</a>
                     </div>
                     <img src="{{asset('/assets/img/photos/restaurant_pizza.jpg')}}" class="slider-hill" alt="slider image">
                     

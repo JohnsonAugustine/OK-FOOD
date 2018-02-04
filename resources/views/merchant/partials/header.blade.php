@@ -113,7 +113,7 @@
                                 <!-- END Side Overlay -->
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ url('/admin/logout') }}"
+                                <a class="dropdown-item" href="{{ url('/merchant/logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     <i class="si si-logout mr-5"></i> Sign Out
