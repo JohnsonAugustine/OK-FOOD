@@ -17,8 +17,9 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('api_token');
             $table->string('phone');
-            $table->string('fcm_id');
+            $table->string('fcm_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
