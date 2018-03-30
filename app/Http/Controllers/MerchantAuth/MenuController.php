@@ -25,7 +25,7 @@ class MenuController extends Controller
                         ->join('restaurants', 'categories.restaurant_id', '=', 'restaurants.id')
                         ->where('restaurants.merchant_id', Auth::user()->id)->get();
 
-        //return $menus;                
+        //return $menus;
         return view('merchant.menu.index')->withMenus($menus);
     }
 

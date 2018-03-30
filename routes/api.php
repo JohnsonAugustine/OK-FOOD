@@ -20,3 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/customers', 'Api\CustomerController@customers');
 Route::post('/auth/register', 'Api\AuthController@register');
 Route::post('/auth/login', 'Api\AuthController@login');
+Route::get('/menu/all', 'Api\MenuController@getAllMenu');
+Route::get('/menu/{id}', 'Api\MenuController@getMenuByCategory');
+Route::get('/category/{id}', 'Api\CategoryController@getAllCategoryByRestaurant');
+Route::get('/restaurants', 'Api\RestaurantController@getAllRestaurant');
+Route::get('/restaurant/{id}', 'Api\RestaurantController@getAllRestaurantByType');
+Route::get('/types', 'Api\TypeController@getAllType');

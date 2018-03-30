@@ -2,7 +2,7 @@
 
 @section('content')
                     <!-- Bootstrap Forms Validation -->
-                    <h2 class="content-heading">Bootstrap Forms</h2>
+                    <h2 class="content-heading"></h2>
                     <div class="block">
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Update</h3>

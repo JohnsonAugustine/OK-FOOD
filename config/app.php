@@ -165,7 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        Appointer\Swaggervel\SwaggervelServiceProvider::class,
         /*
          * Package Service Providers...
          */

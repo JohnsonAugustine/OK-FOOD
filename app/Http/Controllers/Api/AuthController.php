@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use DB;
 use Illuminate\Http\Request;
 use App\Transformers\CustomerTransformer;
@@ -12,7 +13,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class AuthController extends Controller
 {
-
     use AuthenticatesUsers;
 
     public function register(Request $request, Customer $customer)
@@ -42,9 +42,12 @@ class AuthController extends Controller
 
     public function login(Request $request, Customer $customer)
     {
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password]))
-        {
-            return response()->json(['error' => 'Wrong Credential', 401]);
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // return response()->json(['error' => true, 'message'=> 'Wrong Credentials'], 401);
+            return fractal()
+                    ->item($customer)
+                    ->transformWith(new CustomerTransformer)
+                    ->toArray();
         }
 
         $customer = $customer->find(Auth::user()->id);
@@ -52,6 +55,6 @@ class AuthController extends Controller
         return fractal()
                     ->item($customer)
                     ->transformWith(new CustomerTransformer)
-                    ->toArray(); 
+                    ->toArray();
     }
 }

@@ -107,7 +107,7 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
         $merchants = Auth::user();
 
-        // return $merchant;                
+        // return $merchant;
         return view('merchant.restaurant.edit')->with(['merchants' => $merchants, 'types'=> $types, 'restaurant'=> $restaurant]);
     }
 

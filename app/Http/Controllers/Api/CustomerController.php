@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Customer;
 use Illuminate\Http\Request;
-
 
 class CustomerController extends Controller
 {
@@ -13,5 +13,4 @@ class CustomerController extends Controller
 
         return response()->json($customer);
     }
-
 }
