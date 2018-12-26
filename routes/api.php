@@ -25,6 +25,8 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::get('/tax', 'Api\TaxController@getTax');
 
     Route::get('/restaurant/{id}', 'Api\RestaurantController@show');
+    Route::get('/restaurantsByGroup/{id}', 'Api\RestaurantController@byGroup');
+    //Route::get('/restaurantsByType/{id}', 'Api\RestaurantController@byType');
     Route::get('/category/{id}', 'Api\CategoryController@getAllCategoryByRestaurant');
     Route::get('/groupmenus', 'Api\GroupMenuController@index');
     Route::get('/types', 'Api\TypeController@index');
@@ -35,8 +37,6 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::post('/finalOrder', 'Api\OrderController@finalOrder');
     Route::get('/favorite/{customer_id}', 'Api\FavoriteController@getFavoriteCustomer');
     Route::post('/addfavorite', 'Api\FavoriteController@favorite');
-    Route::get('/tes', 'Api\TaxController@tes');
-    Route::get('/tis', 'Api\TypeController@index');
 });
 
 // Route::get('/customers', 'Api\CustomerController@customers');
