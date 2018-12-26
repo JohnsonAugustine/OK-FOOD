@@ -42,5 +42,8 @@ class TaxController extends ApiController
         ]); 
     }
 
+    public function tes() {
+        echo "TES";
+    }
 
 }

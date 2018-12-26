@@ -35,7 +35,7 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::get('/favorite/{customer_id}', 'Api\FavoriteController@getFavoriteCustomer');
     Route::post('/addfavorite', 'Api\FavoriteController@favorite');
     Route::get('/tax', 'Api\TaxController@getTax');
-
+    Route::get('/tes', 'Api\TaxController@tes');
 });
 
 // Route::get('/customers', 'Api\CustomerController@customers');
