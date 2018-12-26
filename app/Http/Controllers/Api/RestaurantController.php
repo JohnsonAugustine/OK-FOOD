@@ -36,7 +36,7 @@ class RestaurantController extends ApiController
     public function byGroup($id)
     {
         $limit = Input::get('limit') ?: 100;
-        $restaurants = Restaurant::paginate(10)->where('group_menu_id', $id);
+        $restaurants = Restaurant::where('group_menu_id', $id)->orWhere('type_id', $id)->paginate($limit);
         return $this->respondWithPagination($restaurants, [
             'restaurants' => $this->restaurantTransformer->transformCollection($restaurants->all())
         ], 'Records Found!');
