@@ -7,6 +7,7 @@ use App\OrderDetail;
 use App\Customer;
 use App\Category;
 use App\Menu;
+use App\Tax;
 use App\Repository\Transformers\OrderDetailTransformer;
 use App\Repository\Transformers\OrderTransformer;
 use Illuminate\Http\Request;
@@ -66,4 +67,6 @@ class OrderDetailController extends ApiController
 
         }
     }
+
+    
 }
