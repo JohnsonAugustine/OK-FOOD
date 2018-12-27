@@ -93,9 +93,9 @@ class OrderController extends ApiController
         $order->delivery_address = $data['delivery_address'];
         $order->delivery_cost = $data['delivery_cost'];
         $order->total = $data['total'];
-        $order->amount_paid = $data['amount_paid'];
-        $order->change = $data['change'];
-        $order->status = $data['status'];
+        //$order->amount_paid = $data['amount_paid'];
+        //$order->change = $data['change'];
+        $order->status =  0; //$data['status'];
 
         $order->save();
 
@@ -137,5 +137,21 @@ class OrderController extends ApiController
 //        {
 //            OrderDetail::create($order);
 //        }
+    }
+
+    public function tesOrder(Request $request) {
+
+        $order = new Order();
+
+        $order->restaurant_id = $request['restaurant_id'];
+        $order->customer_id = $request['customer_id'];
+        $order->delivery_address = $request['delivery_address'];
+        $order->delivery_cost = $request['delivery_cost'];
+        $order->total = $request['total'];
+        //$order->amount_paid = $data['amount_paid'];
+        //$order->change = $data['change'];
+        $order->status = 0;
+
+        $order->save();
     }
 }
