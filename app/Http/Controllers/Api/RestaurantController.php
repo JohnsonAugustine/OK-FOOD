@@ -8,6 +8,7 @@ use App\Http\Requests;
 use JWTAuth;
 use Response;
 use DB;
+use URL; 
 use App\Repository\Transformers\RestaurantTransformer;
 use \Illuminate\Http\Response as Res;
 use Validator;
@@ -77,13 +78,21 @@ class RestaurantController extends ApiController
         $qry = "SELECT *,(((acos(sin(($latitude * pi()/180)) * sin((latitude * pi()/180))+cos(($latitude*pi()/180)) * cos((latitude* pi()/180)) * cos((($longitude- longitude) * pi()/180)))) * 180/pi())*60*1.1515*1.609344) as distance FROM restaurants HAVING distance <= $distance";
         $restaurants = DB::select($qry);
 
+    
+        $data = $restaurants;
+
+        foreach ($data as $key => $value) {
+            $value->image = URL::asset('images/'.$value->image);
+        }
+       
+
         return $this->respond([
 
             'error' => false,
             'status' => 'success',
             'status_code' => Res::HTTP_OK,
             'message' => 'ok',
-            'restaurants' => $restaurants
+            'restaurants' => $data,
 
         ]);
     }
