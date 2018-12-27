@@ -18,11 +18,12 @@ class CreateOrdersTable extends Migration
             $table->integer('restaurant_id');
             $table->integer('customer_id');
             $table->string('delivery_address')->nullable();
+            $table->string('delivery_notes')->nullable();
             $table->decimal('delivery_cost', 8, 2)->nullable();
             $table->decimal('total', 8, 2)->nullable();
             $table->decimal('amount_paid', 8, 2)->nullable();
             $table->decimal('change', 8, 2)->nullable();
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

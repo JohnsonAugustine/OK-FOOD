@@ -18,7 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('order_id');
             $table->integer('menu_id');
             $table->integer('qty');
-            $table->string('order_notes');
+            $table->string('order_notes')->nullable();
             $table->decimal('unit_price');
             $table->decimal('sub_total');
             $table->timestamps();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
 use Response;
+use DB;
 use App\Repository\Transformers\RestaurantTransformer;
 use \Illuminate\Http\Response as Res;
 use Validator;
@@ -64,5 +65,44 @@ class RestaurantController extends ApiController
         ]);
          
  
+    }
+
+    public function nearMe(Request $request) {
+        
+        //10km near me
+        $distance = 10;
+        $latitude = $request['latitude'];
+        $longitude = $request['longitude'];
+
+        $qry = "SELECT *,(((acos(sin(($latitude * pi()/180)) * sin((latitude * pi()/180))+cos(($latitude*pi()/180)) * cos((latitude* pi()/180)) * cos((($longitude- longitude) * pi()/180)))) * 180/pi())*60*1.1515*1.609344) as distance FROM restaurants HAVING distance <= $distance";
+        $restaurants = DB::select($qry);
+
+        return $this->respond([
+
+            'error' => false,
+            'status' => 'success',
+            'status_code' => Res::HTTP_OK,
+            'message' => 'ok',
+            'restaurants' => $restaurants
+
+        ]);
+    }
+
+    function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_long, $unit = 'km', $decimals = 2) {
+        // Calculate the distance in degrees
+        $degrees = rad2deg(acos((sin(deg2rad($point1_lat))*sin(deg2rad($point2_lat))) + (cos(deg2rad($point1_lat))*cos(deg2rad($point2_lat))*cos(deg2rad($point1_long-$point2_long)))));
+        
+        // Convert the distance in degrees to the chosen unit (kilometres, miles or nautical miles)
+        switch($unit) {
+            case 'km':
+                $distance = $degrees * 111.13384; // 1 degree = 111.13384 km, based on the average diameter of the Earth (12,735 km)
+                break;
+            case 'mi':
+                $distance = $degrees * 69.05482; // 1 degree = 69.05482 miles, based on the average diameter of the Earth (7,913.1 miles)
+                break;
+            case 'nmi':
+                $distance =  $degrees * 59.97662; // 1 degree = 59.97662 nautic miles, based on the average diameter of the Earth (6,876.3 nautical miles)
+        }
+        return round($distance, $decimals);
     }
 }
