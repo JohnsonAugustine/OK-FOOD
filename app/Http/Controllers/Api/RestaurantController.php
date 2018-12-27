@@ -65,7 +65,37 @@ class RestaurantController extends ApiController
             'restaurant' => $this->restaurantTransformer->transform($restaurant)
         ]);
          
- 
+    }
+
+    public function search(Request $request) {
+        $name = $request['name'];
+        $restaurants = Restaurant::where('name', 'LIKE', "%$name%")->get();
+        $restaurantwithmenus = Restaurant::join('categories', 'categories.restaurant_id', 'restaurants.id')
+                                  ->join('menus', 'menus.category_id', 'categories.id')
+                                  ->addSelect('restaurants.*')
+                                  ->where('menus.name', 'LIKE', "%$name%")->get();
+        //$restaurantwithmenus = DB::select("SELECT * FROM restaurants INNER JOIN categories ON categories.restaurant_id = restaurants.id INNER JOIN menus ON menus.category_id = categories.id WHERE menus.name LIKE '%$name'");
+        if (sizeof($restaurants)>0) {
+            return $this->respond([
+
+                'error' => false,
+                'status' => 'success',
+                'status_code' => Res::HTTP_OK,
+                'message' => 'ok',
+                'restaurants' => $restaurants,
+    
+            ]);
+         } else {
+            return $this->respond([
+
+                'error' => false,
+                'status' => 'success',
+                'status_code' => Res::HTTP_OK,
+                'message' => 'ok',
+                'restaurants' => $restaurantwithmenus,
+    
+            ]);
+        }
     }
 
     public function nearMe(Request $request) {
