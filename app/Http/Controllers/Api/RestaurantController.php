@@ -75,7 +75,14 @@ class RestaurantController extends ApiController
                                   ->addSelect('restaurants.*')
                                   ->where('menus.name', 'LIKE', "%$name%")->get();
         //$restaurantwithmenus = DB::select("SELECT * FROM restaurants INNER JOIN categories ON categories.restaurant_id = restaurants.id INNER JOIN menus ON menus.category_id = categories.id WHERE menus.name LIKE '%$name'");
+
         if (sizeof($restaurants)>0) {
+
+            $data = $restaurants;
+
+            foreach ($data as $key => $value) {
+                $value->image = URL::asset('images/'.$value->image);
+            }
             return $this->respond([
 
                 'error' => false,
@@ -86,6 +93,12 @@ class RestaurantController extends ApiController
     
             ]);
          } else {
+            $data = $restaurantwithmenus;
+
+            foreach ($data as $key => $value) {
+                $value->image = URL::asset('images/'.$value->image);
+            }
+
             return $this->respond([
 
                 'error' => false,
