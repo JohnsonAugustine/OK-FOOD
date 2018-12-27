@@ -71,9 +71,9 @@ class RestaurantController extends ApiController
         $name = $request['name'];
         $restaurants = Restaurant::where('name', 'LIKE', "%$name%")->get();
         $restaurantwithmenus = Restaurant::join('categories', 'categories.restaurant_id', 'restaurants.id')
-                                  ->join('menus', 'menus.category_id', 'categories.id')
+                                  ->join('menus', 'menus.category_id', 'categories.id')->join('types', 'types.id', 'restaurants.type_id')
                                   ->addSelect('restaurants.*')
-                                  ->where('menus.name', 'LIKE', "%$name%")->groupBy('id')->get();
+                                  ->where('menus.name', 'LIKE', "%$name%")->groupBy('restaurants.id')->get();
         //$restaurantwithmenus = DB::select("SELECT * FROM restaurants INNER JOIN categories ON categories.restaurant_id = restaurants.id INNER JOIN menus ON menus.category_id = categories.id WHERE menus.name LIKE '%$name'");
 
         if (sizeof($restaurants)>0) {
