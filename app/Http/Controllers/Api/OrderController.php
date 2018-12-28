@@ -8,6 +8,7 @@ use App\Customer;
 use App\Category;
 use App\Restaurant;
 use App\Menu;
+use URL; 
 use App\Repository\Transformers\OrderTransformer;
 use App\Repository\Transformers\RestaurantTransformer;
 use Illuminate\Http\Request;
@@ -146,6 +147,11 @@ class OrderController extends ApiController
     public function history(Request $request) {
         $customer_id = $request['customer_id'];
         $orders = Restaurant::join('orders', 'orders.restaurant_id', 'restaurants.id')->where('orders.customer_id', '=', $customer_id)->get();
+
+
+        foreach($orders as $order) {
+            $order->image = URL::asset('images/'.$order->image);
+        }
 
         return $this->respond([
 
