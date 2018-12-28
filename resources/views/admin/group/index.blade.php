@@ -87,7 +87,7 @@
                                             <span class="text-black">{{$i}}</span>
                                         </td>
                                         <td>
-                                        <img src="{{ asset('images/' . $group->image) }}" width="60" height="20">
+                                        <img src="{{ asset('images/' . $group->icon) }}" width="60" height="20">
                                         </td>
                                         <td class="d-none d-md-table-cell">
                                             <span class="text-black">{{$group->name}}</span>

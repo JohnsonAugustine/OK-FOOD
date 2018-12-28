@@ -101,13 +101,13 @@ class GroupMenuController extends Controller
         $group = GroupMenu::find($id);
 
         $group->name = $request->input('name');
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        if ($request->hasFile('icon')) {
+            $image = $request->file('icon');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('/images/'.$filename);
-            Image::make($image)->resize(800, 400)->save($location);
-            $oldFilename = $group->image;
-            $group->image = $filename;
+            Image::make($image)->save($location);
+            $oldFilename = $group->icon;
+            $group->icon = $filename;
             Storage::delete($oldFilename);
         }
         $group->save();
@@ -127,7 +127,7 @@ class GroupMenuController extends Controller
     public function destroy($id)
     {
         $group = GroupMenu::find($id);
-        Storage::delete($group->image);
+        Storage::delete($group->icon);
 
         $group->delete();
 
