@@ -68,5 +68,5 @@ class OrderDetailController extends ApiController
         }
     }
 
-    
+
 }

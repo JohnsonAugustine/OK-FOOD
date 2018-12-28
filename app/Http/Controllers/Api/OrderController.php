@@ -6,8 +6,10 @@ use App\Order;
 use App\OrderDetail;
 use App\Customer;
 use App\Category;
+use App\Restaurant;
 use App\Menu;
 use App\Repository\Transformers\OrderTransformer;
+use App\Repository\Transformers\RestaurantTransformer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
@@ -21,10 +23,12 @@ use Illuminate\Support\Facades\Input;
 class OrderController extends ApiController
 {
     protected $orderTransformer;
+    protected $restaurantTransformer;
 
     public function __construct(OrderTransformer $orderTransformer)
     {
         $this->orderTransformer = $orderTransformer;
+        $this->restaurantTransformer = new RestaurantTransformer();
     }
 
     public function order(Request $request)
@@ -137,6 +141,21 @@ class OrderController extends ApiController
 //        {
 //            OrderDetail::create($order);
 //        }
+    }
+
+    public function history(Request $request) {
+        $customer_id = $request['customer_id'];
+        $orders = Restaurant::join('orders', 'orders.restaurant_id', 'restaurants.id')->where('orders.customer_id', '=', $customer_id)->get();
+
+        return $this->respond([
+
+            'error' => false,
+            'status' => 'success',
+            'status_code' => Res::HTTP_OK,
+            'message' => 'ok',
+            'orders' => $orders,
+
+        ]);
     }
 
     public function tesOrder(Request $request) {

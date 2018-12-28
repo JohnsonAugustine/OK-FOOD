@@ -39,7 +39,7 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::post('/addfavorite', 'Api\FavoriteController@favorite');
     Route::get('/nearme', 'Api\RestaurantController@nearMe');
     Route::get('/search', 'Api\RestaurantController@search');
-
+    Route::get('/order_history', 'Api\OrderController@history');
 });
 
 // Route::get('/customers', 'Api\CustomerController@customers');
