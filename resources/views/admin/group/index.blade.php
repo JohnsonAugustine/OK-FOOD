@@ -102,7 +102,7 @@
                                                         <i class="fa fa-pencil"></i>
                                                     </button>
                                                     {!! Form::close()  !!}
-                                                    {!! Form::open(['route' => ['admin.type.destroy', $group->id], 'method' => 'DELETE']) !!}
+                                                    {!! Form::open(['route' => ['admin.group.destroy', $group->id], 'method' => 'DELETE']) !!}
                                                     <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
                                                         <i class="fa fa-times"></i>
                                                     </button>
@@ -122,7 +122,7 @@
                                 <div class="pagination justify-content-end">
                                     
                                 <div class="pagination justify-content-end">
-                                    {!! $types->links(); !!}
+                                    {!! $groups->links(); !!}
                                 </div>
                                     
                                 </div>
