@@ -19,7 +19,7 @@ class GroupMenuController extends Controller
     {
         $groups = GroupMenu::paginate(10);
 
-        return view('admin.group.index')->withTypes($groups);
+        return view('admin.group.index')->withGroups($groups);
     }
 
     /**
@@ -78,9 +78,9 @@ class GroupMenuController extends Controller
      */
     public function edit($id)
     {
-        $type = Type::find($id);
+        $group = GroupMenu::find($id);
 
-        return view('admin.group.edit')->withType($type);
+        return view('admin.group.edit')->withGroup($group);
     }
 
     /**
@@ -98,19 +98,19 @@ class GroupMenuController extends Controller
             'image' => 'required',
           ]);
 
-        $type = Type::find($id);
+        $group = GroupMenu::find($id);
 
-        $type->name = $request->input('name');
+        $group->name = $request->input('name');
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('/images/'.$filename);
             Image::make($image)->resize(800, 400)->save($location);
-            $oldFilename = $type->image;
-            $type->image = $filename;
+            $oldFilename = $group->image;
+            $group->image = $filename;
             Storage::delete($oldFilename);
         }
-        $type->save();
+        $group->save();
 
         Session::flash('success', 'Type was successfully updated!');
 
@@ -126,12 +126,12 @@ class GroupMenuController extends Controller
      */
     public function destroy($id)
     {
-        $type = Type::find($id);
-        Storage::delete($type->image);
+        $group = GroupMenu::find($id);
+        Storage::delete($group->image);
 
-        $type->delete();
+        $group->delete();
 
-        Session::flash('success', 'Type was successfully deleted!');
+        Session::flash('success', 'Group was successfully deleted!');
 
         return redirect()->route('admin.group.index');
     }
