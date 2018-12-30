@@ -5,7 +5,7 @@
                     <h2 class="content-heading">Bootstrap Forms</h2>
                     <div class="block">
                         <div class="block-header block-header-default">
-                            <h3 class="block-title">Edit Category</h3>
+                            <h3 class="block-title">Edit Group</h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option">
                                     <i class="si si-wrench"></i>
@@ -17,7 +17,7 @@
                                 <div class="col-xl-6">
                                     <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                    {!! Form::model($type, ['route' => ['admin.type.update', $type->id], 'method' => 'PUT', 'files' => true]) !!}
+                                    {!! Form::model($group, ['route' => ['admin.group.update', $group->id], 'method' => 'PUT', 'files' => true]) !!}
 
                                         <div class="form-group row">
                                             <label class="col-lg-2 col-form-label" for="val-username">Name <span class="text-danger">*</span></label>
@@ -27,9 +27,9 @@
                                         </div>
                                         
                                         <div class="form-group row">
-                                            <label class="col-lg-2 col-form-label" for="val-username">Image</label>
+                                            <label class="col-lg-2 col-form-label" for="val-username">Icon</label>
                                             <div class="col-lg-6">
-                                            {{ Form::file('image', null, array('class' => 'form-control', 'required' => '')) }}
+                                            {{ Form::file('icon', null, array('class' => 'form-control', 'required' => '')) }}
 
                                             </div>
                                         </div>

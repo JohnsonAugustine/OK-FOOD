@@ -13,6 +13,7 @@ use App\Repository\Transformers\OrderTransformer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
+use URL; 
 use Response;
 use App\Repository\Transformers\MenuTransformer;
 use \Illuminate\Http\Response as Res;
@@ -68,5 +69,23 @@ class OrderDetailController extends ApiController
         }
     }
 
+
+    public function history(Request $request) {
+        $orderId = $request['order_id'];
+        $order_details = OrderDetail::join('menus', 'menus.id', 'order_details.menu_id')->where('order_id', $orderId)->get();
+
+        foreach($order_details as $order) {
+            $order->image = URL::asset('images/'.$order->image);
+        }
+
+        return $this->respond([
+
+            'error' => false,
+            'status' => 'success',
+            'status_code' => $this->getStatusCode(),
+            'message' => 'successful!',
+            'order_details' => $order_details,
+        ]);
+    }
 
 }
