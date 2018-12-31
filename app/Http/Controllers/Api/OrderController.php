@@ -96,10 +96,9 @@ class OrderController extends ApiController
         $order->restaurant_id = $data['restaurant_id'];
         $order->customer_id = $data['customer_id'];
         $order->delivery_address = $data['delivery_address'];
+        $order->delivery_notes = $data['delivery_notes'];
         $order->delivery_cost = $data['delivery_cost'];
         $order->total = $data['total'];
-        //$order->amount_paid = $data['amount_paid'];
-        //$order->change = $data['change'];
         $order->status =  0; //$data['status'];
 
         $order->save();
@@ -129,19 +128,6 @@ class OrderController extends ApiController
         ]);
 
 
-//        $data = $request->json()->all();
-//        $orders = [
-//            'order_id' => $data['order_id'],
-//            'menu_id' => $data['menu_id'],
-//            'qty' => $data['qty'],
-//            'order_notes' => $data['order_id'],
-//            'unit_price' => $data['unit_price'],
-//            'sub_total' => $data['sub_total'],
-//            ];
-//        foreach ($orders as $order)
-//        {
-//            OrderDetail::create($order);
-//        }
     }
 
     public function history(Request $request) {
@@ -173,8 +159,6 @@ class OrderController extends ApiController
         $order->delivery_address = $request['delivery_address'];
         $order->delivery_cost = $request['delivery_cost'];
         $order->total = $request['total'];
-        //$order->amount_paid = $data['amount_paid'];
-        //$order->change = $data['change'];
         $order->status = 0;
 
         $order->save();

@@ -11,10 +11,9 @@ class OrderTransformer extends Transformer
             'restaurant_id' => $item->restaurant_id,
             'customer_id' => $item->customer_id,
             'delivery_address' => $item->delivery_address,
+            'delivery_notes' => $item->delivery_notes,
             'delivery_cost' => $item->delivery_cost,
             'total' => $item->total,
-            'amount_paid' => $item->amount_paid,
-            'change' => $item->change,
             'created_at' => $item->created_at->toDateTimeString(),
             'updated_at' => $item->updated_at->toDateTimeString(),
         ];
