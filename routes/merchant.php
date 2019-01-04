@@ -14,3 +14,4 @@ Route::resource('category', 'MerchantAuth\CategoryController');
 Route::resource('restaurant', 'MerchantAuth\RestaurantController');
 Route::resource('menu', 'MerchantAuth\MenuController');
 Route::resource('order', 'MerchantAuth\OrderController');
+Route::resource('order_detail', 'MerchantAuth\OrderDetailController');

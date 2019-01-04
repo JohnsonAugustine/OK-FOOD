@@ -62,7 +62,6 @@ class RestaurantController extends Controller
         $restaurant->longitude = $request->longitude;
         $restaurant->rating = $request->rating;
         $restaurant->is_active = $request->is_active;
-        $restaurant->priority = $request->priority;
         $restaurant->open = $request->open;
         $restaurant->close = $request->close;
 
@@ -132,7 +131,6 @@ class RestaurantController extends Controller
         $restaurant->longitude = $request->input('longitude');
         $restaurant->rating = $request->input('rating');
         $restaurant->is_active = $request->input('is_active');
-        $restaurant->priority = $request->input('priority');
         $restaurant->open = $request->input('open');
         $restaurant->close = $request->input('close');
 

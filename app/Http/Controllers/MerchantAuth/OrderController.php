@@ -19,16 +19,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('restaurant')
-            ->join('restaurants', 'orders.restaurant_id', 'restaurants.id')
-            ->where('restaurants.merchant_id', Auth::user()->id)->paginate(10);
+        $orders = Order::join('restaurants', 'orders.restaurant_id', 'restaurants.id')
+            ->where('restaurants.merchant_id', Auth::user()->id)->get(['orders.*']);
 //        $orders = DB::table('orders')->select('orders.*')
 //            ->join('restaurants', 'orders.restaurant_id', 'restaurants.id')
 //            ->where('restaurants.merchant_id', Auth::user()->id)->paginate(5);
 
         //flash('There is a new order')->info()->important();
 
-        return view('merchant.order.index')->withOrders($orders);
+        return view('merchant.order.index')->with(['orders' => $orders]);
         //return $orders;
     }
 
@@ -84,7 +83,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->status = $request->input('status');
+        $order->save();
+
+        //$orders = Order::join('restaurants', 'orders.restaurant_id', 'restaurants.id')
+        //->where('restaurants.merchant_id', Auth::user()->id)->get(['orders.*']);
+        return redirect()->route('merchant.order.index');
+
     }
 
     /**

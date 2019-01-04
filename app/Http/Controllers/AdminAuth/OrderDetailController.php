@@ -54,7 +54,7 @@ class OrderDetailController extends Controller
     public function show($id)
     {
         $orders = OrderDetail::where('order_id', '=', $id)->get();
-        ireturn view('admin.orderdetail.show')->with(['orders' => $orders]);
+        return view('admin.order_detail.show')->with(['orders' => $orders]);
         //return $orders;
     }
 

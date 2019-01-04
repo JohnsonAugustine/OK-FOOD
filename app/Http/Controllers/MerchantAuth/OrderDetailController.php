@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\MerchantAuth;
 
 use Illuminate\Http\Request;
+use App\Menu;
+use App\Category;
+use App\Order;
+use App\OrderDetail;
 
 class OrderDetailController extends Controller
 {
@@ -45,7 +49,8 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
-        //
+        $orders = OrderDetail::where('order_id', '=', $id)->get();
+        return view('merchant.order_detail.show')->with(['orders' => $orders]);
     }
 
     /**

@@ -1,124 +1,77 @@
 @extends('merchant.template')
 
 @section('content')
- <!-- Main Container -->
- <main id="main-container">
-                <!-- Page Content -->
-                <div class="content">
-                <div class="row gutters-tiny">
-
-                    <!-- <h2 class="content-heading">Table Menus</h2> -->
-                    <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
-                                <div class="block-content block-content-full block-sticky-options">
-                                    <div class="block-options">
-                                        <div class="block-options-item">
-                                            <i class="fa fa-circle-o fa-2x text-info-light"></i>
-                                        </div>
-                                    </div>
-                                    <div class="py-20 text-center">
-                                        <div class="font-size-h2 font-w700 mb-0 text-info" data-toggle="countTo" data-to="{{$menus->count()}}">0</div>
-                                        <div class="font-size-sm font-w600 text-uppercase text-muted">Menu</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- END All Products -->
-
+<!-- Main content -->
+<section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Menus</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <table id="data" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Availability</th>
+                          <th>Created At</th>
+                          <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($menus as $i => $menu)    
+                        <tr>
+                          <td>{{$i+1}}</td>
+                          <td>{{$menu->name}}</td>
+                          <td>{{$menu->price}}</td>
+                          @if($menu->availability==0)
+                          <td>Available</td>
+                          @else
+                          <td>Unavailable</td>
+                          @endif
+                          <td>{{$menu->created_at}}</td>
+                          <td>
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success">Action</button>
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                  {{-- <li><a href="#">Edit</a></li>
+                                  <li><a href="#">Delete</a></li> --}}
+                                  {!! Form::open(['route' => ['merchant.menu.edit', $menu->id], 'method'=> 'GET']) !!}
+                                    <li><button type="submit" class="btn btn-block btn-warning btn-flat" data-toggle="tooltip" title="Edit">
+                                            Edit
+                                    </button></li>
+                              {!! Form::close()  !!}
+                              {!! Form::open(['route' => ['merchant.menu.destroy', $menu->id], 'method' => 'DELETE']) !!}
+                                    <li><button type="submit" class="btn btn-block btn-danger btn-flat" data-toggle="tooltip" title="Delete">
+                                            Delete
+                                    </button></li>
+                              {!! Form::close()  !!}
+                              </div>
+                              
+                              
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
                         
-
-                        <!-- Add Product -->
-                        <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="{{url('/merchant/menu/create')}}">
-                                <div class="block-content block-content-full block-sticky-options">
-                                    <div class="block-options">
-                                        <div class="block-options-item">
-                                            <i class="fa fa-archive fa-2x text-success-light"></i>
-                                        </div>
-                                    </div>
-                                    <div class="py-20 text-center">
-                                        <div class="font-size-h2 font-w700 mb-0 text-success">
-                                            <i class="fa fa-plus"></i>
-                                        </div>
-                                        <div class="font-size-sm font-w600 text-uppercase text-muted">New Menu</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- END Add Product -->
+                      </table>
                     </div>
-                    <!-- END Overview -->
-                    <div class="block block-rounded">
-                        <div class="block-content bg-body-light">
-                            <!-- Search -->
-                            <form action="be_pages_ecom_products.html" method="post" onsubmit="return false;">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search category..">
-                                        <div class="input-group-btn">
-                                            <button type="submit" class="btn btn-secondary">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- END Search -->
-                        </div>
-                    <!-- Full Table -->
-                    <div class="block">
-                        <div class="block-header block-header-default">
-                            <h3 class="block-title">Menus</h3>
-                        </div>
-                        <div class="block-content">
-                            <!-- <p>The first way to make a table responsive, is to wrap it with <code>&lt;div class=&quot;table-responsive&quot;&gt;&lt;/div&gt;</code>. This way the table will be horizontally scrollable and all data will be accessible on smaller screens (&lt; 768px).</p> -->
-                            <div class="table-responsive">
-                                <table class="table table-striped table-vcenter">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" style="width: 100px;"><i class="fa fa-glass"></i></th>
-                                            <th>Name</th>
-                                            <th style="width: 15%;">Price</th>
-                                            <th style="width: 15%;">Availability</th>
-                                            <th class="text-center" style="width: 100px;">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($menus as $menu)
-                                        <tr>
-                                            <td class="text-center">
-                                                <img class="img-avatar img-avatar48" src="{{ asset('images/' . $menu->image) }}" alt="">
-                                            </td>
-                                            <td class="font-w600">{{$menu->name}}</td>
-                                            <td>{{$menu->price}}</td>
-                                            <td>
-                                                @if($menu->availability==1) 
-                                                <span class="badge badge-success">Available</span>
-                                                @else
-                                                <span class="badge badge-danger">Not Available</span>
-                                                @endif
-                                            </td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    {!! Form::open(['route' => ['merchant.menu.edit', $menu->id], 'method'=> 'GET']) !!}
-                                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </button>
-                                                    {!! Form::close()  !!}
-                                                    {!! Form::open(['route' => ['merchant.menu.destroy', $menu->id], 'method' => 'DELETE']) !!}
-                                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                    {!! Form::close()  !!}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END Full Table -->
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </section>
+            <!-- /.content -->
 
 @endsection

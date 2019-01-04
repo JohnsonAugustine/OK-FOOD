@@ -1,136 +1,69 @@
 @extends('merchant.template')
 
 @section('content')
-
-
-                <!-- Page Content -->
-                <div class="content">
-                    <!-- Overview -->
-                    <h2 class="content-heading">Overview</h2>
-                    <div class="row gutters-tiny">
-                        <!-- All Products -->
-                        <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
-                                <div class="block-content block-content-full block-sticky-options">
-                                    <div class="block-options">
-                                        <div class="block-options-item">
-                                            <i class="fa fa-circle-o fa-2x text-info-light"></i>
-                                        </div>
-                                    </div>
-                                    <div class="py-20 text-center">
-                                        <div class="font-size-h2 font-w700 mb-0 text-info" data-toggle="countTo" data-to="{{$categories->count()}}">0</div>
-                                        <div class="font-size-sm font-w600 text-uppercase text-muted">Category</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- END All Products -->
-
+<!-- Main content -->
+<section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Categories</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <table id="data" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Name</th>
+                          <th>Created At</th>
+                          <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($categories as $i => $category)    
+                        <tr>
+                          <td>{{$i+1}}</td>
+                          <td>{{$category->name}}</td>
+                          <td>{{$category->created_at}}</td>
+                          <td>
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success">Action</button>
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                  <span class="caret"></span>
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                  {{-- <li><a href="#">Edit</a></li>
+                                  <li><a href="#">Delete</a></li> --}}
+                                  {!! Form::open(['route' => ['merchant.category.edit', $category->id], 'method'=> 'GET']) !!}
+                                    <li><button type="submit" class="btn btn-block btn-warning btn-flat" data-toggle="tooltip" title="Edit">
+                                            Edit
+                                    </button></li>
+                              {!! Form::close()  !!}
+                              {!! Form::open(['route' => ['merchant.category.destroy', $category->id], 'method' => 'DELETE']) !!}
+                                    <li><button type="submit" class="btn btn-block btn-danger btn-flat" data-toggle="tooltip" title="Delete">
+                                            Delete
+                                    </button></li>
+                              {!! Form::close()  !!}
+                              </div>
+                              
+                              
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tbody>
                         
-
-                        <!-- Add Product -->
-                        <div class="col-md-6 col-xl-6">
-                            <a class="block block-rounded block-link-shadow" href="{{url('/merchant/category/create')}}">
-                                <div class="block-content block-content-full block-sticky-options">
-                                    <div class="block-options">
-                                        <div class="block-options-item">
-                                            <i class="fa fa-archive fa-2x text-success-light"></i>
-                                        </div>
-                                    </div>
-                                    <div class="py-20 text-center">
-                                        <div class="font-size-h2 font-w700 mb-0 text-success">
-                                            <i class="fa fa-plus"></i>
-                                        </div>
-                                        <div class="font-size-sm font-w600 text-uppercase text-muted">New Category</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- END Add Product -->
+                      </table>
                     </div>
-                    <!-- END Overview -->
-                    <div class="block block-rounded">
-                        <div class="block-content bg-body-light">
-                            <!-- Search -->
-                            <form action="be_pages_ecom_products.html" method="post" onsubmit="return false;">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search category..">
-                                        <div class="input-group-btn">
-                                            <button type="submit" class="btn btn-secondary">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- END Search -->
-                        </div>
-                        <div class="block-content">
-                            <!-- Products Table -->
-                            <table class="table table-borderless table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 100px;">NO</th>
-                                        <!-- <th style="width: 100px;">Image</th> -->
-                                        <th class="d-none d-sm-table-cell">Name</th>
-                                        <th>Created At</th>
-                                        <th >Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php $i = 0 ?>
-                                @foreach ($categories as $category)
-                                <?php $i++ ?>
-                                    <tr>
-                                        <td>
-                                            <span class="text-black">{{$i}}</span>
-                                        </td>
-                                        
-                                        <td class="d-none d-md-table-cell">
-                                            <span class="text-black">{{$category->name}}</span>
-                                        </td>
-                                        <td class="d-none d-md-table-cell">
-                                            <span class="text-black">{{$category->created_at}}</span>
-                                        </td>
-                                        <td class="text-center">
-                                                <div class="btn-group">
-                                                    {!! Form::open(['route' => ['merchant.category.edit', $category->id], 'method'=> 'GET']) !!}
-                                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </button>
-                                                    {!! Form::close()  !!}
-                                                    {!! Form::open(['route' => ['merchant.category.destroy', $category->id], 'method' => 'DELETE']) !!}
-                                                    <button type="submit" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                    {!! Form::close()  !!}
-                                                </div>
-                                            </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-
-                            
-                            <!-- END Products Table -->
-
-                            <!-- Navigation -->
-                            <nav aria-label="Products navigation">
-                                <div class="pagination justify-content-end">
-                                    
-                                <div class="pagination justify-content-end">
-                                </div>
-                                    
-                                </div>
-                            </nav>
-                            <!-- END Navigation -->
-                        </div>
-                    </div>
-                    <!-- END Products -->
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
                 </div>
-                <!-- END Page Content -->
-            </main>
-            <!-- END Main Container -->
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </section>
+            <!-- /.content -->
 
 @endsection

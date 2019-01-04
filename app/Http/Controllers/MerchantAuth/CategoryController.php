@@ -139,6 +139,6 @@ class CategoryController extends Controller
 
         Session::flash('success', 'Category was successfully deleted!');
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('merchant.category.index');
     }
 }

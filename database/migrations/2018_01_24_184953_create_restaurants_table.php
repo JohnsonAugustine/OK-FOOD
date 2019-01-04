@@ -29,7 +29,6 @@ class CreateRestaurantsTable extends Migration
             $table->double('longitude')->nullable();
             $table->double('rating')->nullable();
             $table->integer('is_active');
-            $table->integer('priority')->nullable();
             $table->time('open');
             $table->time('close');
             $table->timestamps();

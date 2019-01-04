@@ -23,7 +23,6 @@ class RestaurantTransformer extends Transformer
             'longitude'   => $restaurant->longitude,
             'rating'      => $restaurant->rating,
             'is_active'   => $restaurant->is_active,
-            'priority'    => $restaurant->priority,
             'open'        => $restaurant->open,
             'close'       => $restaurant->close,
         ];
