@@ -20,6 +20,7 @@ class OrderEvent implements ShouldBroadcast
     public $orderId;
     public $message;
     public $restaurantName;
+    public $merchantEmail;
     /**
      * Create a new event instance.
      *
@@ -31,7 +32,7 @@ class OrderEvent implements ShouldBroadcast
         $order = Order::find($orderId)->first();
         $customer = $order->customer;
         $restaurant = $order->restaurant;
-        $this->restaurantName = $restaurant->name;
+        $this->merchantEmail = $restaurant->merchant->email;
         $this->message = "Theres a new order from {$customer->name}";
 
     }
@@ -43,7 +44,8 @@ class OrderEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        //dd($this->merchantEmail);
         //return new PrivateChannel('order');
-        return ['resto-'.$this->restaurantName];
+        return [$this->merchantEmail];
     }
 }
