@@ -8,7 +8,7 @@ use Image;
 use Session;
 use Storage;
 
-class TypeController extends Controller
+class TypesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::paginate(10);
+        $types = Type::all();
 
-        return view('admin.type.index')->withTypes($types);
+        return view('admin.types.index')->withTypes($types);
     }
 
     /**
@@ -29,7 +29,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.type.create');
+        return view('admin.types.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class TypeController extends Controller
         $type->save();
         Session::flash('success', 'Type was successfully created!');
 
-        return redirect()->route('admin.type.index');
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class TypeController extends Controller
     {
         $type = Type::find($id);
 
-        return view('admin.type.edit')->withType($type);
+        return view('admin.types.edit')->withType($type);
     }
 
     /**
@@ -95,12 +95,12 @@ class TypeController extends Controller
     {
         $this->validate($request, [
             'name'  => 'required|max:255',
-            'image' => 'required',
           ]);
 
         $type = Type::find($id);
 
         $type->name = $request->input('name');
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time().'.'.$image->getClientOriginalExtension();
@@ -114,7 +114,7 @@ class TypeController extends Controller
 
         Session::flash('success', 'Type was successfully updated!');
 
-        return redirect()->route('admin.type.index');
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -133,6 +133,6 @@ class TypeController extends Controller
 
         Session::flash('success', 'Type was successfully deleted!');
 
-        return redirect()->route('admin.type.index');
+        return redirect()->route('admin.types.index');
     }
 }

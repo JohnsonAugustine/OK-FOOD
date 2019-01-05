@@ -8,7 +8,7 @@ use Image;
 use Session;
 use Storage;
 
-class GroupMenuController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class GroupMenuController extends Controller
     {
         $groups = GroupMenu::paginate(10);
 
-        return view('admin.group.index')->withGroups($groups);
+        return view('admin.groups.index')->withGroups($groups);
     }
 
     /**
@@ -29,7 +29,7 @@ class GroupMenuController extends Controller
      */
     public function create()
     {
-        return view('admin.group.create');
+        return view('admin.groups.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class GroupMenuController extends Controller
         $group->save();
         Session::flash('success', 'Group was successfully created!');
 
-        return redirect()->route('admin.group.index');
+        return redirect()->route('admin.groups.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class GroupMenuController extends Controller
     {
         $group = GroupMenu::find($id);
 
-        return view('admin.group.edit')->withGroup($group);
+        return view('admin.groups.edit')->withGroup($group);
     }
 
     /**
@@ -95,7 +95,6 @@ class GroupMenuController extends Controller
     {
         $this->validate($request, [
             'name'  => 'required|max:255',
-            'image' => 'required',
           ]);
 
         $group = GroupMenu::find($id);
@@ -114,7 +113,7 @@ class GroupMenuController extends Controller
 
         Session::flash('success', 'Type was successfully updated!');
 
-        return redirect()->route('admin.group.index');
+        return redirect()->route('admin.groups.index');
     }
 
     /**
@@ -133,6 +132,6 @@ class GroupMenuController extends Controller
 
         Session::flash('success', 'Group was successfully deleted!');
 
-        return redirect()->route('admin.group.index');
+        return redirect()->route('admin.groups.index');
     }
 }

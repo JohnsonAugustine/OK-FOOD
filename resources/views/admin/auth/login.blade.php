@@ -1,192 +1,96 @@
-<!doctype html>
-<!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ config('app.name')}} | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/font-awesome/css/font-awesome.min.css") }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/Ionicons/css/ionicons.min.css") }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset("adminlte/dist/css/AdminLTE.min.css") }}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ asset("adminlte/plugins/iCheck/square/blue.css") }}">
 
-        <title>{{$page->title}}</title>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js") }}"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js") }}"></script>
+  <![endif]-->
 
-        <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="{{ url('merchant/login') }}"><b>OK</b>FOOD</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
 
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework">
-        <meta property="og:site_name" content="Codebase">
-        <meta property="og:description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
-         <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{ asset("/assets/img/favicons/favicon.png") }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset("/assets/img/favicons/favicon-192x192.png") }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset("/assets/img/favicons/apple-touch-icon-180x180.png") }}">
-        <!-- END Icons -->
-
-        <!-- Stylesheets -->
-        <!-- Codebase framework -->
-        <link rel="stylesheet" id="css-main" href="{{ asset("/assets/css/codebase.min.css") }}">
-
-        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
-        <!-- END Stylesheets -->
-    </head>
-    <body>
-        <!-- Page Container -->
-        <!--
-            Available classes for #page-container:
-
-        GENERIC
-
-            'enable-cookies'                            Remembers active color theme between pages (when set through color theme helper Codebase() -> uiHandleTheme())
-
-        SIDEBAR & SIDE OVERLAY
-
-            'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
-            'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
-            'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
-            'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
-            'sidebar-inverse'                           Dark themed sidebar
-
-            'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
-            'side-overlay-o'                            Visible Side Overlay by default
-
-            'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
-
-        HEADER
-
-            ''                                          Static Header if no class is added
-            'page-header-fixed'                         Fixed Header
-
-        HEADER STYLE
-
-            ''                                          Classic Header style if no class is added
-            'page-header-modern'                        Modern Header style
-            'page-header-inverse'                       Dark themed Header (works only with classic Header style)
-            'page-header-glass'                         Light themed Header with transparency by default
-                                                        (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
-            'page-header-glass page-header-inverse'     Dark themed Header with transparency by default
-                                                        (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
-
-        MAIN CONTENT LAYOUT
-
-            ''                                          Full width Main Content if no class is added
-            'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
-            'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-        -->
-        <div id="page-container" class="main-content-boxed">
-            <!-- Main Container -->
-            <main id="main-container">
-                <!-- Page Content -->
-                <div class="bg-image" style="background-image: url('{{asset("assets/img/photos/restaurant.jpg") }}');">
-                    <div class="row mx-0 bg-black-op">
-                        <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
-                            <div class="p-30 invisible" data-toggle="appear">
-                                <p class="font-size-h3 font-w600 text-white">
-                                    {{$page->title}}
-                                </p>
-                                <p class="text-white-op">
-                                    Copyright &copy; {{$page->name}} <span class="js-year-copy"> 2018</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="hero-static col-md-6 col-xl-4 d-flex align-items-center bg-white invisible" data-toggle="appear" data-class="animated fadeInRight">
-                            <div class="content content-full">
-                                <!-- Header -->
-                                <div class="px-30 py-10">
-                                    <a class="link-effect font-w700" href="{{url('/')}}">
-                                        <i class="si si-fire"></i>
-                                        <span class="font-size-l text-primary-dark">{{$page->title}}</span><span class="font-size-xl"></span>
-                                    </a>
-                                    <h1 class="h3 font-w700 mt-30 mb-10">Welcome to {{$page->name}}</h1>
-                                    <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
-                                </div>
-                                <!-- END Header -->
-
-                                <!-- Sign In Form -->
-                                <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
-                                <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
-                        {{ csrf_field() }}
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} form-material floating" >
-                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                                @if ($errors->has('email'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                                <label for="email">Email</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <div class="form-material floating">
-                                            <input id="password" type="password" class="form-control" name="password">
-                                                @if ($errors->has('password'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('password') }}</strong>
-                                                    </span>
-                                                @endif        
-                                                <label for="password">Password</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-12">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="login-remember-me" name="login-remember-me">
-                                                <span class="custom-control-indicator"></span>
-                                                <span class="custom-control-description">Remember Me</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-sm btn-hero btn-alt-primary">
-                                            <i class="si si-login mr-10"></i> Sign In
-                                        </button>
-                                        <div class="mt-30">
-                                            <!-- <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="#">
-                                                <i class="fa fa-plus mr-5"></i> Create Account
-                                            </a> -->
-                                            <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{ url('/admin/password/reset') }}">
-                                                <i class="fa fa-warning mr-5"></i> Forgot Password
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- END Sign In Form -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Page Content -->
-            </main>
-            <!-- END Main Container -->
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
+        {{ csrf_field() }}
+      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
+            <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif 
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          
         </div>
-        <!-- END Page Container -->
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
-        <!-- Codebase Core JS -->
-        <script src="{{ asset("/assets/js/core/jquery.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/popper.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/bootstrap.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.slimscroll.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.scrollLock.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.appear.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.countTo.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/js.cookie.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/codebase.js") }}"></script>
+    
 
+    <a href="{{ url('/merchant/register')}}" class="text-center">Register a new membership</a>
 
-        <!-- Page JS Plugins -->
-        <script src="{{ asset("/assets/js/plugins/jquery-validation/jquery.validate.min.js") }}"></script>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
-        <!-- Page JS Code -->
-        <script src="{{ asset("/assets/js/pages/op_auth_signin.js") }}"></script>
-    </body>
+<!-- jQuery 3 -->
+<script src="{{ asset("adminlte/bower_components/jquery/dist/jquery.min.js") }}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{ asset("adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+<!-- iCheck -->
+<script src="{{ asset("adminlte/plugins/iCheck/icheck.min.js") }}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>
+</body>
 </html>

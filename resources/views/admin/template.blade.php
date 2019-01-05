@@ -1,85 +1,124 @@
 <!DOCTYPE html>
-<!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ config('app.name')}}</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css") }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/font-awesome/css/font-awesome.min.css") }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/Ionicons/css/ionicons.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") }}">
 
-        <title>{{$page->title}}</title>
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset("adminlte/dist/css/AdminLTE.min.css") }}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" href="{{ asset("adminlte/dist/css/skins/skin-red.min.css") }}">
 
-        <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js") }}"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js") }}"></script>
+  <![endif]-->
 
-        <!-- Open Graph Meta -->
-        <meta property="og:title" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework">
-        <meta property="og:site_name" content="Codebase">
-        <meta property="og:description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
-
-        <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{ asset("/assets/img/favicons/favicon.png") }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset("/assets/img/favicons/favicon-192x192.png") }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset("/assets/img/favicons/apple-touch-icon-180x180.png") }}">
-        <!-- END Icons -->
-
-        <!-- Stylesheets -->
-        <!-- Codebase framework -->
-        <link rel="stylesheet" id="css-main" href="{{ asset("/assets/css/codebase.min.css") }}">
-
-        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="{{ asset("/assets/css/themes/flat.min.css") }}"> -->
-        <!-- END Stylesheets -->
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-    <body>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-red sidebar-mini">
+<div class="wrapper">
 
-    <div id="page-container" class="sidebar-o sidebar-inverse side-scroll page-header-fixed page-header-modern main-content-boxed">
-    
-    @include('admin.partials.sideoverlay')
-
-    @include('admin.partials.sidebar')
 
     @include('admin.partials.header')
-
-    @yield('content')
-
-    </div>
-        <!-- END Page Container -->
+    @include('admin.partials.sidebar')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            <small></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+          </ol>
+        </section>
     
-        <!-- Codebase Core JS -->
-        <script src="{{ asset("/assets/js/core/jquery.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/popper.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/bootstrap.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.slimscroll.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.scrollLock.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.appear.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/jquery.countTo.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/core/js.cookie.min.js") }}"></script>
-        <script src="{{ asset("/assets/js/codebase.js") }}"></script>
+        <!-- Main content -->
+        <section class="content container-fluid">
+    
+          <!--------------------------
+            | Your Page Content Here |
+            -------------------------->
+            @yield('content')
+    
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    
+</div>
+    <!-- ./wrapper -->
+    
+    <!-- REQUIRED JS SCRIPTS -->
+    
+    <!-- jQuery 3 -->
+<script src="{{ asset("adminlte/bower_components/jquery/dist/jquery.min.js") }}"></script>
+    <!-- Bootstrap 3.3.7 -->
+<script src="{{ asset("adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js") }}"></script>
+<script src="{{ asset("adminlte/dist/js/pusher.min.js") }}"></script>
 
-        <!-- Page JS Plugins -->
-        <script src="{{ asset("/assets/js/plugins/chartjs/Chart.bundle.min.js") }}"></script>
-
-        <!-- Page JS Code -->
-        <script src="{{ asset("/assets/js/pages/be_pages_ecom_dashboard.js") }}"></script>
-
-        <script>
-        function toggleFullScreen() {
-            var elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-    }
-        }
-        </script>
-    </body>
-
-</html>
+    <!-- AdminLTE App -->
+<script src="{{ asset("adminlte/dist/js/adminlte.min.js") }}"></script>
+<!-- DataTables -->
+<script src="{{ asset("adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js") }}"></script>
+<script src="{{ asset("adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset("adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js") }}"></script>
+<!-- FastClick -->
+<script src="{{ asset("adminlte/bower_components/fastclick/lib/fastclick.js") }}"></script>
+<script>
+    $(function () {
+      //$('#data').DataTable()
+      $('#data').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
+</body>
+</html>    

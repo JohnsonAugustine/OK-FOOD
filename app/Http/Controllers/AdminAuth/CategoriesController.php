@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Category;
+use App\Restaurant;
 use Illuminate\Http\Request;
 use Image;
 use Session;
 use Storage;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class CategoryController extends Controller
     {
         $categories = Category::paginate(10);
 
-        return view('admin.category.index')->withCategories($categories);
+        return view('admin.categories.index')->withCategories($categories);
     }
 
     /**
@@ -36,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -52,16 +53,10 @@ class CategoryController extends Controller
 
         $category->name = $request->name;
 
-        // $image = $request->file('image');
-        //   $filename = time() . '.' . $image->getClientOriginalExtension();
-        //   $location = public_path('/images/' . $filename);
-        //   Image::make($image)->resize(800, 400)->save($location);
-        // $category->image = $filename;
-
         $category->save();
         Session::flash('success', 'Category was successfully created!');
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -86,8 +81,10 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+        $restaurants = Restaurant::all();
 
-        return view('admin.category.edit')->withCategory($category);
+        //return $restaurants;
+        return view('admin.categories.edit')->with(['category' => $category, 'restaurants' => $restaurants]);
     }
 
     /**
@@ -100,27 +97,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-          ]);
+        // $this->validate($request, [
+        //     'name' => 'required|max:255',
+        //   ]);
 
         $category = Category::find($id);
-
-        // $category->name = $request->input('name');
-        //   if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $filename = time() . '.' . $image->getClientOriginalExtension();
-        //     $location = public_path('/images/' . $filename);
-        //     Image::make($image)->resize(800, 400)->save($location);
-        //     $oldFilename = $category->image;
-        //     $category->image = $filename;
-        //     Storage::delete($oldFilename);
-        //   }
+        $category->name = $request->input('name');
         $category->save();
 
         Session::flash('success', 'Menu was successfully updated!');
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -139,6 +126,6 @@ class CategoryController extends Controller
 
         Session::flash('success', 'Category was successfully deleted!');
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 }

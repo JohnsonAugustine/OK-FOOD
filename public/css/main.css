@@ -387,7 +387,7 @@ ul.sub-menu {
 
 #footer {
   padding-bottom: 10px;
-  background-image: url("../assets/img/photos/footer.png");
+  background-image: url("../img/footer.png");
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: contain;
@@ -533,7 +533,7 @@ ul.sub-menu {
 *******Home Page******
 **************************/
 #home-slider {
-  background: url("../assets/img/photos/slider-bg.png") 0 100% repeat-x;
+  background: url("../img/slider-bg.png") 0 100% repeat-x;
   position: relative;
 }
 
@@ -642,7 +642,7 @@ ul.sub-menu {
 }
 
 #action {
-  background-image: url("../assets/img/photos/tour-bg.png");
+  background-image: url("../img/tour-bg.png");
   background-color: #fbfafa;
   background-repeat: repeat-x;
   height: 157px;
@@ -750,7 +750,7 @@ ul.sub-menu {
 }
 
 #page-breadcrumb {
-  background-image: url("../assets/img/photos/tour-bg.png");
+  background-image: url("../img/tour-bg.png");
   background-color: #fbfafa;
   background-repeat: repeat-x;
   height: 130px;
@@ -778,7 +778,7 @@ ul.sub-menu {
 }
 
 .tour-button {
-  background-image: url("../assets/img/photos/restaurant_pizza2.jpg");
+  background-image: url("../img/restaurant_pizza2.jpg");
   height: 100%;
   background-repeat: no-repeat;
   position: absolute;
@@ -889,12 +889,12 @@ ul.sub-menu {
 
 .right.team-carousel-control {
   right: -50px;
-  background-image: url("../assets/img/photos/rigth.png");
+  background-image: url("../img/rigth.png");
 }
 
 .left.team-carousel-control {
   left: -50px;
-  background-image: url("../assets/img/photos/left.png");
+  background-image: url("../img/left.png");
 }
 
 .team-carousel-control:hover{

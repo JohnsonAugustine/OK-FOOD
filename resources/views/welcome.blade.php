@@ -17,11 +17,11 @@
 	    <script src="js/html5shiv.js"></script>
 	    <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('/assets/img/photos/logo.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('/assets/img/photos/logo.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('/assets/img/photos/logo.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('/assets/img/photos/logo.png')}}">
+    <link rel="shortcut icon" href="{{asset('/favicon.co')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('/img/logo.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('/img/logo.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('/img/phos/logo.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('/img/logo.png')}}">
 </head><!--/head-->
 
 <body>
@@ -52,7 +52,7 @@
                     </button>
 
                     <a class="navbar-brand" href="{{url('')}}">
-                    	<h1><img src="{{ asset('/assets/img/photos/textlogo.png')}}" alt="logo"></h1>
+                    	<h1><img src="{{ asset('/img/textlogo.png')}}" alt="logo"></h1>
                     </a>
                     
                 </div>
@@ -65,9 +65,7 @@
                                 <li><a href="{{url('/merchant/register')}}">Register</a></li>
                             </ul>
                         </li>                    
-                        <li><a href="{{url('/merchant/register')}}">Claim Restaurant</a>
-                        
-                        </li>
+                    
                                            
                         <li><a href="{{url('/admin/login')}}">Administrator</a></li>                    
                     </ul>
@@ -94,7 +92,7 @@
                         <p>{{$page->about}}</p>
                         <a href="{{url('/merchant/register')}}" class="btn btn-common">JOIN WITH US</a>
                     </div>
-                    <img src="{{asset('/assets/img/photos/restaurant_pizza.jpg')}}" class="slider-hill" alt="slider image">
+                    <img src="{{asset('/img/restaurant_pizza.jpg')}}" class="slider-hill" alt="slider image">
                     
                 </div>
             </div>
@@ -211,7 +209,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center bottom-separator">
-                    <img src="{{asset('/assets/img/photos/under.png')}}" class="img-responsive inline" alt="">
+                    <img src="{{asset('/img/under.png')}}" class="img-responsive inline" alt="">
                 </div>
                 <div class="col-md-2 col-sm-3">
                    
