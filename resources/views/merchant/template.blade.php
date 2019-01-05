@@ -126,8 +126,6 @@ desired effect
       cluster: 'ap1',
     });
 
-    var restoname = $("#resto-name").text();
-    console.log(restoname);
     // Subscribe to the channel we specified in our Laravel Event
     var channel = pusher.subscribe('{{Auth::user()->email}}');
 
