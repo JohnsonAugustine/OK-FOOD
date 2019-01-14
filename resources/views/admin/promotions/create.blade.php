@@ -20,11 +20,11 @@
                                     {!! Form::open(['route' => 'admin.promotions.store', 'data-parsley-validate' => '', 'files' => true, 'method' => 'POST  ']) !!}
 
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-username">Menu <span class="text-danger">*</span></label>
+                                            <label class="col-lg-4 col-form-label" for="val-username">Restaurant <span class="text-danger">*</span></label>
                                             <div class="col-lg-8">
-                                            <select class="form-control" name="menu_id">
-                                                    @foreach($menus as $menu)
-                                                    <option value='{{ $menu->id }}'>{{ $menu->name }}</option>
+                                            <select class="form-control" name="restaurant_id">
+                                                    @foreach($restaurants as $restaurant)
+                                                    <option value='{{ $restaurant->id }}'>{{ $restaurant->name }}</option>
                                                     @endforeach
                                             </select>
                                             </div>

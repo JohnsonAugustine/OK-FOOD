@@ -34,7 +34,7 @@ class PromotionsController extends Controller
     {
         $restaurants = Restaurant::all();
 
-        return view('admin.promotions.create')->withMenus($restaurants);
+        return view('admin.promotions.create')->withRestaurants($restaurants);
     }
 
     /**
