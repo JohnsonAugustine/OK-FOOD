@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('password');
             $table->longText('api_token')->nullable();
             $table->string('phone');
-            $table->string('fcm_id')->nullable();
+            $table->string('fcm_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

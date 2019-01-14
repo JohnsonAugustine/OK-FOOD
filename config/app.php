@@ -169,6 +169,7 @@ return [
         Srmklive\FlashAlert\FlashAlertServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Dyaa\Pushover\PushoverServiceProvider::class,
+        Kawankoding\Fcm\FcmServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -237,6 +238,7 @@ return [
         'JWTFactory'   => Tymon\JWTAuth\Facades\JWTFactory::class,
         'FlashAlert'   => Srmklive\FlashAlert\Facades\FlashAlert::class,
         'Pushover'     => Dyaa\Pushover\Facades\Pushover::class,
+        'Fcm' => Kawankoding\Fcm\FcmFacade::class,
   ],
 
 ];

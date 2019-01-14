@@ -11,7 +11,7 @@ use Image;
 use Session;
 use Storage;
 
-class RestaurantController extends Controller
+class RestaurantsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::paginate(16);
 
-        return view('admin.restaurant.index')->withRestaurants($restaurants);
+        return view('admin.restaurants.index')->withRestaurants($restaurants);
     }
 
     /**
@@ -36,7 +36,7 @@ class RestaurantController extends Controller
         $merchants = Merchant::all();
         $shortcuts = GroupMenu::all();
 
-        return view('admin.restaurant.create')->with(['types' => $types, 'merchants' => $merchants, 'shortcuts' => $shortcuts]);
+        return view('admin.restaurants.create')->with(['types' => $types, 'merchants' => $merchants, 'shortcuts' => $shortcuts]);
     }
 
     /**
@@ -74,7 +74,7 @@ class RestaurantController extends Controller
         $restaurant->save();
         Session::flash('success', 'Restaurant was successfully created!');
 
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::find($id);
 
-        return view('admin.restaurant.show')->withRestaurant($restaurant);
+        return view('admin.restaurants.show')->withRestaurant($restaurant);
     }
 
     /**
@@ -148,7 +148,7 @@ class RestaurantController extends Controller
 
         Session::flash('success', 'Restaurant was successfully updated!');
 
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -167,6 +167,6 @@ class RestaurantController extends Controller
 
         Session::flash('success', 'Restaurant was successfully deleted!');
 
-        return redirect()->route('admin.restaurant.index');
+        return redirect()->route('admin.restaurants.index');
     }
 }

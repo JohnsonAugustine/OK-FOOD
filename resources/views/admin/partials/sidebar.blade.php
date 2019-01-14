@@ -43,10 +43,21 @@
                   <li><a href="{{url('/admin/groups')}}">Groups</a></li>
                 </ul>
           </li>
+          <li class="treeview">
+              <a href="#"><i class="fa fa-map-marker"></i> <span>Restaurant</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('/admin/restaurants/create')}}">New Restaurant</a></li>
+                <li><a href="{{url('/admin/restaurants')}}">Restaurants</a></li>
+              </ul>
+        </li>
           <li><a href="{{url('/admin/categories')}}"><i class="fa fa-list"></i> <span>Category</span></a></li>
-          <li><a href="{{url('/admin/menu')}}"><i class="fa fa-coffee"></i> <span>Menu</span></a></li>
-          <li><a href="{{url('/admin/customer')}}"><i class="fa fa-group"></i> <span>Customer</span></a></li>
-          <li><a href="{{url('/admin/notification')}}"><i class="fa fa-bell"></i> <span>Notification</span></a></li>
+          <li><a href="{{url('/admin/menus')}}"><i class="fa fa-coffee"></i> <span>Menu</span></a></li>
+          <li><a href="{{url('/admin/customers')}}"><i class="fa fa-group"></i> <span>Customer</span></a></li>
+          <li><a href="{{url('/admin/notifications')}}"><i class="fa fa-bell"></i> <span>Notification</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>

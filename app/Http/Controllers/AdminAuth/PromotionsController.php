@@ -9,7 +9,7 @@ use Image;
 use Session;
 use Storage;
 
-class PromotionController extends Controller
+class PromotionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
 
-        return view('admin.promotion.index')->withPromotions($promotions);
+        return view('admin.promotions.index')->withPromotions($promotions);
     }
 
     /**
@@ -30,9 +30,9 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        $menus = Menu::all();
+        $restaurants = Restaurant::all();
 
-        return view('admin.promotion.create')->withMenus($menus);
+        return view('admin.promotions.create')->withMenus($restaurants);
     }
 
     /**
@@ -44,10 +44,10 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        $menus = Menu::all();
+        $restaurants = Restaurant::all();
         $promotion = new Promotion();
 
-        $promotion->menu_id = $request->menu_id;
+        $promotion->restaurant_id = $request->restaurant_id;
         $promotion->name = $request->name;
         $promotion->description = $request->description;
         $promotion->image = $request->image;
@@ -61,7 +61,7 @@ class PromotionController extends Controller
         $promotion->save();
         Session::flash('success', 'Promotion was successfully created!');
 
-        return redirect()->route('admin.promotion.index');
+        return redirect()->route('admin.promotions.index');
     }
 
     /**
@@ -85,7 +85,8 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $promotion = Promotion::find($id);
+        return view('admin.promotions.edit')->with(['promotion' => $promotion]);
     }
 
     /**
@@ -98,7 +99,12 @@ class PromotionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $promotion = Promotion::find($id);
+        $promotion->name = $request->input('name');
+        $promotion->description = $request->input('description');
+        $promotion->save();
+
+        return redirect()->route('admin.promotions.index');
     }
 
     /**
@@ -117,6 +123,6 @@ class PromotionController extends Controller
 
         Session::flash('success', 'Promotion was successfully deleted!');
 
-        return redirect()->route('admin.promotion.index');
+        return redirect()->route('admin.promotions.index');
     }
 }
