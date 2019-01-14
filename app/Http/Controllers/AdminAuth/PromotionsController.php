@@ -4,6 +4,8 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Menu;
 use App\Promotion;
+use App\Restaurant;
+use App\Merchant;
 use Illuminate\Http\Request;
 use Image;
 use Session;
