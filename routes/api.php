@@ -25,7 +25,7 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::get('/tax', 'Api\TaxController@getTax');
 
     Route::get('/restaurant/{id}', 'Api\RestaurantController@show');
-    Route::get('/restaurantsByGroup/{id}', 'Api\RestaurantController@byGroup');
+    Route::get('/restaurantsByGroup', 'Api\RestaurantController@byGroup');
     //Route::get('/restaurantsByType/{id}', 'Api\RestaurantController@byType');
     Route::get('/category/{id}', 'Api\CategoryController@getAllCategoryByRestaurant');
     Route::get('/groupmenus', 'Api\GroupMenuController@index');
