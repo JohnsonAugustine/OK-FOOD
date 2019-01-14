@@ -17,7 +17,7 @@
                                 <div class="col-xl-6">
                                     <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                    {!! Form::open(['route' => 'admin.promotion.store', 'data-parsley-validate' => '', 'files' => true, 'method' => 'POST  ']) !!}
+                                    {!! Form::open(['route' => 'admin.promotions.store', 'data-parsley-validate' => '', 'files' => true, 'method' => 'POST  ']) !!}
 
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-username">Menu <span class="text-danger">*</span></label>
