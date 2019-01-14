@@ -33,7 +33,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
               <a href="{{url()->previous()}}" class="btn btn-default">Cancel</a>
-              <button type="submit" class="btn btn-info pull-right">Update</button>
+              <button type="submit" class="btn btn-info pull-right">Create</button>
             </div>
             <!-- /.box-footer -->
             {!! Form::close() !!}
