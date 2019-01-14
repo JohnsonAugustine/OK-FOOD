@@ -16,7 +16,7 @@ class CustomersTableSeeder extends Seeder
             'email'      => 'johndoe@example.com',
             'password'   => bcrypt('customer'),
             'phone'      => '0877123456780',
-            'fcm_id'     => '',
+            'fcm_token'     => '',
             'created_at' => \Carbon\Carbon::now(),
         ]);
 
@@ -25,7 +25,7 @@ class CustomersTableSeeder extends Seeder
             'email'      => 'janedoe@example.com',
             'password'   => bcrypt('customer'),
             'phone'      => '0857123456780',
-            'fcm_id'     => '',
+            'fcm_token'     => '',
             'created_at' => \Carbon\Carbon::now(),
         ]);
 
@@ -34,7 +34,7 @@ class CustomersTableSeeder extends Seeder
             'email'      => 'johnroe@example.com',
             'password'   => bcrypt('customer'),
             'phone'      => '0857123456780',
-            'fcm_id'     => '',
+            'fcm_token'     => '',
             'created_at' => \Carbon\Carbon::now(),
         ]);
 
@@ -43,7 +43,7 @@ class CustomersTableSeeder extends Seeder
             'email'      => 'richardroe@example.com',
             'password'   => bcrypt('customer'),
             'phone'      => '0857123456780',
-            'fcm_id'     => '',
+            'fcm_token'     => '',
             'created_at' => \Carbon\Carbon::now(),
         ]);
     }
