@@ -44,6 +44,8 @@ Route::group(['middleware' => 'cors', 'prefix' => '/v1'], function () {
     Route::get('/promos', 'Api\PromotionController@promos');
     Route::get('/push/{orderId}', 'Api\WebNotification@sendPushNotification');
     Route::put('/updateFcm', 'Api\CustomerController@updateFcmToken');
+    Route::post('/pus', 'AdminAuth\FcmController@store')->name('push');
+
 });
 
 // Route::get('/customers', 'Api\CustomerController@customers');
