@@ -14,7 +14,8 @@
           <!-- /.box-header -->
           <!-- form start -->
           {!! Form::open(['route' => 'admin.push', 'data-parsley-validate' => '', 'files' => true, 'method' => 'POST  ']) !!}            
-             <div class="form-group">
+              {{ csrf_field() }}
+            <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 
                 <div class="col-sm-10" style="margin-bottom:20px;">
