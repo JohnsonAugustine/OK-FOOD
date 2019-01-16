@@ -29,9 +29,9 @@
                           <td>{{$menu->name}}</td>
                           <td>{{$menu->price}}</td>
                           @if($menu->availability==0)
-                          <td>Available</td>
-                          @else
                           <td>Unavailable</td>
+                          @else
+                          <td>Available</td>
                           @endif
                           <td>{{$menu->created_at}}</td>
                           <td>

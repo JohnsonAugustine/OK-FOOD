@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
 use Response;
+use Auth;
 use App\Repository\Transformers\CustomerTransformer;
 use \Illuminate\Http\Response as Res;
 use Validator;
@@ -201,6 +202,23 @@ class CustomerController extends ApiController
 
         }
 
+    }
+
+
+    public function updateFcmToken(Request $request) {
+
+        $customer = Customer::find($request['customer_id']);
+        $customer->fcm_token = $request['fcm_token'];
+        $customer->save();
+
+        return $this->respond([
+
+                'error' => false,
+                'status' => 'success',
+                'status_code' => $this->getStatusCode(),
+                'message' => 'Update successful!',
+
+            ]);
     }
 
 }
