@@ -25,7 +25,7 @@ class FcmController extends Controller
             $arr[] = $customer->fcm_token;
         }
 
-        Fcm::to($arr)->data(['title' => $title, 'body' => $body])->send();
+        Fcm::to($arr)->notification(['title' => $title, 'body' => $body])->send();
 
         return redirect()->route('admin.notifications');
     }
